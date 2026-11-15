@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>노멀캐비넷 교동점 · 즉시 예약 안내</title>
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --card: #ffffff;
+      --ink: #1c1917;
+      --muted: #78716c;
+      --line: #e7e5e4;
+      --accent: #1c1917;
+      --ok-bg: #ecfdf5;
+      --ok-ink: #047857;
+      --no-bg: #f5f5f4;
+      --no-ink: #78716c;
+      --airbnb: #ff385c;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .brand-tag {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    h1 {
+      margin: 4px 0 4px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .addr {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .lang-btn {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .date-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .field input[type="date"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 10px;
+      font-size: 14px;
+      font-family: inherit;
+      background: #fff;
+      color: var(--ink);
+    }
+    .summary-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+    }
+    .summary-count strong {
+      color: var(--ok-ink);
+    }
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+    .floors {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 14px;
+    }
+    .floor-btn {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .floor-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .room-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .room-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: opacity 0.15s ease;
+    }
+    .room-card.booked {
+      opacity: 0.55;
+      background: #fafaf9;
+    }
+    .room-meta {
+      min-width: 0;
+    }
+    .room-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+    .room-num {
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .badge.ok {
+      background: var(--ok-bg);
+      color: var(--ok-ink);
+    }
+    .badge.no {
+      background: var(--no-bg);
+      color: var(--no-ink);
+    }
+    .room-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .book-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--airbnb);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .book-btn.disabled {
+      background: var(--line);
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 36px 16px;
+      color: var(--muted);
+      font-size: 14px;
+      background: var(--card);
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+    }
+    footer {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="brand-tag">NORMAL CABINET · GYODONG</div>
+        <h1 id="titleText">노멀캐비넷 교동점</h1>
+        <div class="addr" id="addrText">대구 중구 교동2길 29-11 · 워크인 즉시 예약</div>
+      </div>
+      <button class="lang-btn" id="langBtn" type="button">EN</button>
+    </header>
+
+    <section class="panel">
+      <div class="date-grid">
+        <div class="field">
+          <label for="checkIn" id="checkInLabel">체크인</label>
+          <input type="date" id="checkIn" />
+        </div>
+        <div class="field">
+          <label for="checkOut" id="checkOutLabel">체크아웃</label>
+          <input type="date" id="checkOut" />
+        </div>
+      </div>
+      <div class="summary-bar">
+        <div class="summary-count" id="summaryText">불러오는 중...</div>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="onlyAvail" checked />
+          <span id="onlyAvailLabel">빈 방만 보기</span>
+        </label>
+      </div>
+    </section>
+
+    <div class="floors" id="floorTabs"></div>
+    <div class="room-list" id="roomList"></div>
+
+    <footer id="syncFooter">달력 동기화 확인 중...</footer>
+  </div>
+
+  <script>
+    const i18n = {
+      ko: {
+        title: "노멀캐비넷 교동점",
+        addr: "대구 중구 교동2길 29-11 · 워크인 즉시 예약",
+        checkIn: "체크인",
+        checkOut: "체크아웃",
+        onlyAvail: "빈 방만 보기",
+        all: "전체",
+        floor: (f) => `${f}층`,
+        avail: "예약 가능",
+        booked: "예약 마감",
+        bookBtn: "에어비앤비 예약",
+        bookedBtn: "마감",
+        summary: (ok, total, nights) => `<strong>${ok}개</strong> 예약 가능 · ${nights}박 (총 ${total}실)`,
+        empty: "선택하신 날짜에 예약 가능한 객실이 없습니다. 날짜를 변경하거나 '빈 방만 보기'를 해제해 보세요.",
+        synced: (t) => `에어비앤비 달력 기준 업데이트: ${t}`,
+        langNext: "EN"
+      },
+      en: {
+        title: "Normal Cabinet Gyodong",
+        addr: "29-11 Gyodong 2-gil, Jung-gu, Daegu · Walk-in Booking",
+        checkIn: "Check-in",
+        checkOut: "Check-out",
+        onlyAvail: "Available only",
+        all: "All",
+        floor: (f) => `${f}F`,
+        avail: "Available",
+        booked: "Booked",
+        bookBtn: "Book on Airbnb",
+        bookedBtn: "Unavailable",
+        summary: (ok, total, nights) => `<strong>${ok}</strong> available · ${nights} night(s) (${total} rooms)`,
+        empty: "No rooms available for the selected dates. Try another date or turn off 'Available only'.",
+        synced: (t) => `Airbnb iCal synced: ${t}`,
+        langNext: "KO"
+      }
+    };
+
+    let lang = "ko";
+    let selectedFloor = "all";
+    let rooms = [];
+    let availability = { updated_at: "", rooms: {} };
+
+    function fmtDate(d) {
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, "0");
+      const day = String(d.getDate()).padStart(2, "0");
+      return `${y}-${m}-${day}`;
+    }
+
+    function addDays(dateStr, n) {
+      const d = new Date(dateStr + "T00:00:00");
+      d.setDate(d.getDate() + n);
+      return fmtDate(d);
+    }
+
+    function diffDays(a, b) {
+      const d1 = new Date(a + "T00:00:00");
+      const d2 = new Date(b + "T00:00:00");
+      return Math.max(1, Math.round((d2 - d1) / 86400000));
+    }
+
+    function isAvailable(listingId, checkIn, checkOut) {
+      const info = availability.rooms?.[listingId];
+      if (!info || !Array.isArray(info.blocked)) return true;
+      for (const [s, e] of info.blocked) {
+        if (checkIn < e && checkOut > s) return false;
+      }
+      return true;
+    }
+
+    function renderFloors() {
+      const t = i18n[lang];
+      const floors = ["all", 1, 2, 3, 4];
+      const el = document.getElementById("floorTabs");
+      el.innerHTML = "";
+      floors.forEach((f) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "floor-btn" + (selectedFloor === f ? " active" : "");
+        btn.textContent = f === "all" ? t.all : t.floor(f);
+        btn.onclick = () => {
+          selectedFloor = f;
+          render();
+        };
+        el.appendChild(btn);
+      });
+    }
+
+    function render() {
+      const t = i18n[lang];
+      document.getElementById("titleText").textContent = t.title;
+      document.getElementById("addrText").textContent = t.addr;
+      document.getElementById("checkInLabel").textContent = t.checkIn;
+      document.getElementById("checkOutLabel").textContent = t.checkOut;
+      document.getElementById("onlyAvailLabel").textContent = t.onlyAvail;
+      document.getElementById("langBtn").textContent = t.langNext;
+
+      renderFloors();
+
+      const checkIn = document.getElementById("checkIn").value;
+      const checkOut = document.getElementById("checkOut").value;
+      const onlyAvail = document.getElementById("onlyAvail").checked;
+      const nights = diffDays(checkIn, checkOut);
+
+      const floorRooms = rooms.filter((r) => selectedFloor === "all" || r.floor === selectedFloor);
+      const enriched = floorRooms.map((r) => ({
+        ...r,
+        available: isAvailable(r.listing_id, checkIn, checkOut)
+      }));
+
+      const availCount = enriched.filter((r) => r.available).length;
+      document.getElementById("summaryText").innerHTML = t.summary(availCount, enriched.length, nights);
+
+      const visible = onlyAvail ? enriched.filter((r) => r.available) : enriched;
+      const listEl = document.getElementById("roomList");
+      listEl.innerHTML = "";
+
+      if (visible.length === 0) {
+        listEl.innerHTML = `<div class="empty-state">${t.empty}</div>`;
+      } else {
+        visible.forEach((r) => {
+          const card = document.createElement("div");
+          card.className = "room-card" + (r.available ? "" : " booked");
+          const bookUrl = `${r.room_url}?check_in=${encodeURIComponent(checkIn)}&check_out=${encodeURIComponent(checkOut)}`;
+          card.innerHTML = `
+            <div class="room-meta">
+              <div class="room-top">
+                <span class="room-num">${r.room}</span>
+                <span class="badge ${r.available ? "ok" : "no"}">${r.available ? t.avail : t.booked}</span>
+              </div>
+              <div class="room-sub">${t.floor(r.floor)} · ${r.title}</div>
+            </div>
+            <a class="book-btn ${r.available ? "" : "disabled"}" href="${bookUrl}" target="_blank" rel="noopener">
+              ${r.available ? t.bookBtn : t.bookedBtn}
+            </a>
+          `;
+          listEl.appendChild(card);
+        });
+      }
+
+      const syncTime = availability.updated_at
+        ? availability.updated_at.replace("T", " ").replace("+09:00", " KST")
+        : "-";
+      document.getElementById("syncFooter").textContent = t.synced(syncTime);
+    }
+
+    async function init() {
+      const today = fmtDate(new Date());
+      const checkInEl = document.getElementById("checkIn");
+      const checkOutEl = document.getElementById("checkOut");
+      checkInEl.min = today;
+      checkInEl.value = today;
+      checkOutEl.min = addDays(today, 1);
+      checkOutEl.value = addDays(today, 1);
+
+      checkInEl.addEventListener("change", () => {
+        if (checkOutEl.value <= checkInEl.value) {
+          checkOutEl.value = addDays(checkInEl.value, 1);
+        }
+        checkOutEl.min = addDays(checkInEl.value, 1);
+        render();
+      });
+      checkOutEl.addEventListener("change", render);
+      document.getElementById("onlyAvail").addEventListener("change", render);
+      document.getElementById("langBtn").addEventListener("click", () => {
+        lang = lang === "ko" ? "en" : "ko";
+        render();
+      });
+
+      const [rRes, aRes] = await Promise.all([
+        fetch("./rooms.json", { cache: "no-store" }),
+        fetch("./availability.json", { cache: "no-store" }).catch(() => null)
+      ]);
+      rooms = await rRes.json();
+      if (aRes && aRes.ok) {
+        availability = await aRes.json();
+      }
+      render();
+    }
+
+    init();
+  </script>
+</body>
+</html>

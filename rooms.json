@@ -1,0 +1,227 @@
+[
+  {
+    "room": "#101",
+    "floor": 1,
+    "title": "\"노멀캐비넷(교동점)\"#101",
+    "internal_name": "노캐교동101",
+    "status": "게시 준비 완료",
+    "listing_id": "1814852983471104053",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814852983471104053"
+  },
+  {
+    "room": "#102",
+    "floor": 1,
+    "title": "\"노멀캐비넷(교동점)\"#102",
+    "internal_name": "노캐교동102",
+    "status": "게시 준비 완료",
+    "listing_id": "1814856937247553023",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814856937247553023"
+  },
+  {
+    "room": "#103",
+    "floor": 1,
+    "title": "\"노멀캐비넷(교동점)\"#103",
+    "internal_name": "노캐교동 103",
+    "status": "게시 중단됨",
+    "listing_id": "1814871912587769835",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814871912587769835"
+  },
+  {
+    "room": "#104",
+    "floor": 1,
+    "title": "\"노멀캐비넷(교동점)\"#104",
+    "internal_name": "노캐교동 104",
+    "status": "게시 준비 완료",
+    "listing_id": "1814874933693290746",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814874933693290746"
+  },
+  {
+    "room": "#201",
+    "floor": 2,
+    "title": "\"노멀캐비넷(교동점)\"#201",
+    "internal_name": "노캐교동 201",
+    "status": "게시 준비 완료",
+    "listing_id": "1814883010975676797",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814883010975676797"
+  },
+  {
+    "room": "#202",
+    "floor": 2,
+    "title": "\"노멀캐비넷(교동점)\"#202",
+    "internal_name": "노캐교동 202",
+    "status": "게시 준비 완료",
+    "listing_id": "1814884946540748524",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814884946540748524"
+  },
+  {
+    "room": "#203",
+    "floor": 2,
+    "title": "\"노멀캐비넷(교동점)\"#203",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814960665596083265",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814960665596083265"
+  },
+  {
+    "room": "#204",
+    "floor": 2,
+    "title": "\"노멀캐비넷(교동점)\"#204",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814962346326668411",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814962346326668411"
+  },
+  {
+    "room": "#205",
+    "floor": 2,
+    "title": "\"노멀캐비넷(교동점)\"#205",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814963231899394153",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814963231899394153"
+  },
+  {
+    "room": "#206",
+    "floor": 2,
+    "title": "\"노멀캐비넷(교동점)\"#206",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814964147939032842",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814964147939032842"
+  },
+  {
+    "room": "#207",
+    "floor": 2,
+    "title": "\"노멀캐비넷(교동점)\"#207",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814965027690999327",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814965027690999327"
+  },
+  {
+    "room": "#301",
+    "floor": 3,
+    "title": "\"노멀캐비넷(교동점)\"#301",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814966187730601502",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814966187730601502"
+  },
+  {
+    "room": "#302",
+    "floor": 3,
+    "title": "\"노멀캐비넷(교동점)\"#302",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814967058430677891",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814967058430677891"
+  },
+  {
+    "room": "#303",
+    "floor": 3,
+    "title": "\"노멀캐비넷(교동점)\"#303",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814967897125006778",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814967897125006778"
+  },
+  {
+    "room": "#304",
+    "floor": 3,
+    "title": "\"노멀캐비넷(교동점)\"#304",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814968809775026870",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814968809775026870"
+  },
+  {
+    "room": "#305",
+    "floor": 3,
+    "title": "\"노멀캐비넷(교동점)\"#305",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814969624998864924",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814969624998864924"
+  },
+  {
+    "room": "#306",
+    "floor": 3,
+    "title": "\"노멀캐비넷(교동점)\"#306",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814970472723559549",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814970472723559549"
+  },
+  {
+    "room": "#307",
+    "floor": 3,
+    "title": "\"노멀캐비넷(교동점)\"#307",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814971369840083417",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814971369840083417"
+  },
+  {
+    "room": "#401",
+    "floor": 4,
+    "title": "\"노멀캐비넷(교동점)\"#401",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814972397895705621",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814972397895705621"
+  },
+  {
+    "room": "#402",
+    "floor": 4,
+    "title": "\"노멀캐비넷(교동점)\"#402",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814973410036260725",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814973410036260725"
+  },
+  {
+    "room": "#403",
+    "floor": 4,
+    "title": "\"노멀캐비넷(교동점)\"#403",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814974247643788406",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814974247643788406"
+  },
+  {
+    "room": "#404",
+    "floor": 4,
+    "title": "\"노멀캐비넷(교동점)\"#404",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814975064687815745",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814975064687815745"
+  },
+  {
+    "room": "#405",
+    "floor": 4,
+    "title": "\"노멀캐비넷(교동점)\"#405",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814975837820401085",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814975837820401085"
+  },
+  {
+    "room": "#406",
+    "floor": 4,
+    "title": "\"노멀캐비넷(교동점)\"#406",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814976697218053645",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814976697218053645"
+  },
+  {
+    "room": "#407",
+    "floor": 4,
+    "title": "\"노멀캐비넷(교동점)\"#407",
+    "internal_name": null,
+    "status": "게시 준비 완료",
+    "listing_id": "1814977801137448123",
+    "room_url": "https://www.airbnb.co.kr/rooms/1814977801137448123"
+  }
+]
