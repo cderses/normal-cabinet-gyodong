@@ -2,8 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#faf8f5" />
   <title>노멀캐비넷 교동점 · 즉시 예약 안내</title>
+  <meta name="description" content="노멀캐비넷 교동점 워크인 즉시 예약 — 오늘 밤 빈 방 확인 후 에어비앤비로 바로 예약. 한국어 / English / 中文." />
   <style>
     :root {
       --bg: #faf8f5;
@@ -17,11 +19,16 @@
       --no-bg: #f5f5f4;
       --no-ink: #78716c;
       --airbnb: #ff385c;
+      --notice-bg: #fff7ed;
+      --notice-line: #fed7aa;
+      --notice-ink: #9a3412;
     }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR",
+        "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.45;
@@ -29,15 +36,16 @@
     .wrap {
       max-width: 520px;
       margin: 0 auto;
-      padding: 20px 16px 48px;
+      padding: 18px 16px 44px;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 10px;
+      margin-bottom: 14px;
     }
+    .head-main { min-width: 0; }
     .brand-tag {
       font-size: 11px;
       letter-spacing: 0.08em;
@@ -50,30 +58,85 @@
       font-size: 22px;
       font-weight: 700;
       letter-spacing: -0.02em;
+      line-height: 1.25;
     }
     .addr {
       font-size: 13px;
       color: var(--muted);
+      word-break: keep-all;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: #f0eeeb;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px;
+      flex-shrink: 0;
     }
     .lang-btn {
-      border: 1px solid var(--line);
-      background: var(--card);
-      color: var(--ink);
+      border: 0;
+      background: transparent;
+      color: var(--muted);
       border-radius: 999px;
-      padding: 6px 12px;
+      padding: 5px 10px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
+      font-family: inherit;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
     }
     .panel {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     }
+    .panel-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      margin: 0 0 10px;
+    }
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      counter-reset: step;
+    }
+    .steps li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .steps .num {
+      flex-shrink: 0;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .steps b { font-weight: 700; }
     .date-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -96,11 +159,41 @@
       background: #fff;
       color: var(--ink);
     }
+    .chips {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .stays {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 9px;
+    }
     .summary-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 10px;
       padding-top: 10px;
       border-top: 1px solid var(--line);
       font-size: 13px;
@@ -116,14 +209,18 @@
       color: var(--muted);
       cursor: pointer;
       user-select: none;
+      white-space: nowrap;
     }
+    .toggle-wrap input { margin: 0; }
     .floors {
       display: flex;
       gap: 6px;
       overflow-x: auto;
       padding-bottom: 4px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
     }
+    .floors::-webkit-scrollbar { display: none; }
     .floor-btn {
       border: 1px solid var(--line);
       background: var(--card);
@@ -134,6 +231,7 @@
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
+      font-family: inherit;
     }
     .floor-btn.active {
       background: var(--accent);
@@ -149,7 +247,7 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 14px;
+      padding: 13px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -160,9 +258,7 @@
       opacity: 0.55;
       background: #fafaf9;
     }
-    .room-meta {
-      min-width: 0;
-    }
+    .room-meta { min-width: 0; }
     .room-top {
       display: flex;
       align-items: center;
@@ -178,18 +274,16 @@
       font-weight: 600;
       padding: 2px 8px;
       border-radius: 999px;
+      white-space: nowrap;
     }
-    .badge.ok {
-      background: var(--ok-bg);
-      color: var(--ok-ink);
-    }
-    .badge.no {
-      background: var(--no-bg);
-      color: var(--no-ink);
-    }
+    .badge.ok { background: var(--ok-bg); color: var(--ok-ink); }
+    .badge.no { background: var(--no-bg); color: var(--no-ink); }
     .room-sub {
       font-size: 12px;
       color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .book-btn {
       display: inline-flex;
@@ -212,31 +306,57 @@
     }
     .empty-state {
       text-align: center;
-      padding: 36px 16px;
+      padding: 32px 16px;
       color: var(--muted);
       font-size: 14px;
       background: var(--card);
       border: 1px dashed var(--line);
       border-radius: 14px;
     }
+    .notice {
+      background: var(--notice-bg);
+      border: 1px solid var(--notice-line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      color: var(--notice-ink);
+      line-height: 1.45;
+      margin-top: 12px;
+    }
+    .notice b { font-weight: 700; }
     footer {
-      margin-top: 22px;
+      margin-top: 18px;
       text-align: center;
       font-size: 11px;
       color: var(--muted);
+      line-height: 1.6;
+    }
+    @media (max-width: 380px) {
+      h1 { font-size: 20px; }
+      .lang-btn { padding: 5px 8px; font-size: 11.5px; }
+      .chip { padding: 7px 10px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div>
+      <div class="head-main">
         <div class="brand-tag">NORMAL CABINET · GYODONG</div>
         <h1 id="titleText">노멀캐비넷 교동점</h1>
         <div class="addr" id="addrText">대구 중구 교동2길 29-11 · 워크인 즉시 예약</div>
       </div>
-      <button class="lang-btn" id="langBtn" type="button">EN</button>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" id="lang-ko" type="button" data-lang="ko">한국어</button>
+        <button class="lang-btn" id="lang-en" type="button" data-lang="en">EN</button>
+        <button class="lang-btn" id="lang-zh" type="button" data-lang="zh">中文</button>
+      </div>
     </header>
+
+    <section class="panel" aria-labelledby="stepsTitle">
+      <h2 class="panel-title" id="stepsTitle">이용 방법</h2>
+      <ol class="steps" id="stepsList"></ol>
+    </section>
 
     <section class="panel">
       <div class="date-grid">
@@ -249,6 +369,8 @@
           <input type="date" id="checkOut" />
         </div>
       </div>
+      <div class="chips" id="quickChips"></div>
+      <div class="stays" id="staysText"></div>
       <div class="summary-bar">
         <div class="summary-count" id="summaryText">불러오는 중...</div>
         <label class="toggle-wrap">
@@ -256,6 +378,7 @@
           <span id="onlyAvailLabel">빈 방만 보기</span>
         </label>
       </div>
+      <div class="notice" id="noticeText"></div>
     </section>
 
     <div class="floors" id="floorTabs"></div>
@@ -267,51 +390,126 @@
   <script>
     const i18n = {
       ko: {
+        htmlLang: "ko",
+        pageTitle: "노멀캐비넷 교동점 · 즉시 예약 안내",
         title: "노멀캐비넷 교동점",
         addr: "대구 중구 교동2길 29-11 · 워크인 즉시 예약",
+        stepsTitle: "이용 방법",
+        steps: [
+          "<b>날짜 선택</b> — 오늘·내일 1박은 버튼 한 번으로 선택됩니다.",
+          "<b>빈 방 확인 후 에어비앤비로 즉시 예약</b> — 카드 결제로 바로 확정됩니다.",
+          "<b>에어비앤비 메시지함에서 입실 안내·비밀번호 확인 후 셀프 체크인</b>"
+        ],
         checkIn: "체크인",
         checkOut: "체크아웃",
         onlyAvail: "빈 방만 보기",
         all: "전체",
         floor: (f) => `${f}층`,
+        roomSub: (f) => `${f}층 · 노멀캐비넷(교동점)`,
         avail: "예약 가능",
         booked: "예약 마감",
         bookBtn: "에어비앤비 예약",
         bookedBtn: "마감",
-        summary: (ok, total, nights) => `<strong>${ok}개</strong> 예약 가능 · ${nights}박 (총 ${total}실)`,
-        empty: "선택하신 날짜에 예약 가능한 객실이 없습니다. 날짜를 변경하거나 '빈 방만 보기'를 해제해 보세요.",
+        chips: [
+          { id: "today1", label: "오늘 1박" },
+          { id: "tomorrow1", label: "내일 1박" },
+          { id: "today2", label: "오늘부터 2박" }
+        ],
+        stays: (a, b, n) => `${a} → ${b} · ${n}박`,
+        summary: (ok, total) => `<strong>${ok}실</strong> 예약 가능 · 총 ${total}실`,
+        empty: "선택하신 날짜에 예약 가능한 객실이 없습니다. 다른 날짜를 선택하거나 '빈 방만 보기'를 해제해 보세요.",
+        notice: "<b>예약 후 안내</b> — 에어비앤비 메시지함으로 출입 비밀번호와 입실 안내를 보내드립니다. 도착하면 안내된 비밀번호로 셀프 체크인하세요.",
         synced: (t) => `에어비앤비 달력 기준 업데이트: ${t}`,
-        langNext: "EN"
+        loading: "불러오는 중...",
+        loadError: "객실 정보를 불러오지 못했습니다. 잠시 후 새로고침해 주세요."
       },
       en: {
+        htmlLang: "en",
+        pageTitle: "Normal Cabinet Gyodong · Walk-in Booking",
         title: "Normal Cabinet Gyodong",
         addr: "29-11 Gyodong 2-gil, Jung-gu, Daegu · Walk-in Booking",
+        stepsTitle: "How it works",
+        steps: [
+          "<b>Pick your dates</b> — one tap for tonight or tomorrow, one night.",
+          "<b>Find a free room and book instantly on Airbnb</b> — confirmed right away by card payment.",
+          "<b>Check the Airbnb message inbox for entry instructions and the door code, then self check-in</b>"
+        ],
         checkIn: "Check-in",
         checkOut: "Check-out",
         onlyAvail: "Available only",
         all: "All",
         floor: (f) => `${f}F`,
+        roomSub: (f) => `${f}F · Normal Cabinet Gyodong`,
         avail: "Available",
         booked: "Booked",
         bookBtn: "Book on Airbnb",
         bookedBtn: "Unavailable",
-        summary: (ok, total, nights) => `<strong>${ok}</strong> available · ${nights} night(s) (${total} rooms)`,
-        empty: "No rooms available for the selected dates. Try another date or turn off 'Available only'.",
-        synced: (t) => `Airbnb iCal synced: ${t}`,
-        langNext: "KO"
+        chips: [
+          { id: "today1", label: "Tonight · 1 night" },
+          { id: "tomorrow1", label: "Tomorrow · 1 night" },
+          { id: "today2", label: "2 nights from today" }
+        ],
+        stays: (a, b, n) => `${a} → ${b} · ${n} night${n > 1 ? "s" : ""}`,
+        summary: (ok, total) => `<strong>${ok}</strong> available · ${total} rooms`,
+        empty: "No rooms available for the dates you picked. Try another date or turn off 'Available only'.",
+        notice: "<b>After booking</b> — we send the door code and entry instructions to your Airbnb message inbox. At the door, enter the code for self check-in.",
+        synced: (t) => `Updated from the Airbnb calendar: ${t}`,
+        loading: "Loading...",
+        loadError: "Could not load the room list. Please refresh in a moment."
+      },
+      zh: {
+        htmlLang: "zh-Hans",
+        pageTitle: "NORMAL CABINET 校洞店 · 自助入住预约",
+        title: "NORMAL CABINET 校洞店",
+        addr: "大邱市中区校洞2街 29-11 · 到店即可预约",
+        stepsTitle: "使用方法",
+        steps: [
+          "<b>选择日期</b> — 今晚或明晚住1晚，一键即可选好。",
+          "<b>查看空房并在爱彼迎立即预订</b> — 刷卡支付后马上确认。",
+          "<b>在爱彼迎消息中查看入住说明和门锁密码，自助入住</b>"
+        ],
+        checkIn: "入住",
+        checkOut: "退房",
+        onlyAvail: "只看空房",
+        all: "全部",
+        floor: (f) => `${f}楼`,
+        roomSub: (f) => `${f}楼 · NORMAL CABINET 校洞店`,
+        avail: "可预订",
+        booked: "已满房",
+        bookBtn: "在爱彼迎预订",
+        bookedBtn: "已满房",
+        chips: [
+          { id: "today1", label: "今晚1晚" },
+          { id: "tomorrow1", label: "明晚1晚" },
+          { id: "today2", label: "今天起2晚" }
+        ],
+        stays: (a, b, n) => `${a} → ${b} · ${n}晚`,
+        summary: (ok, total) => `可订 <strong>${ok}</strong> 间 · 共 ${total} 间`,
+        empty: "所选日期没有空房。请更换日期，或关闭“只看空房”再试。",
+        notice: "<b>预订后提示</b> — 门锁密码和入住说明会发送到您的爱彼迎消息。到店后按密码自助入住。",
+        synced: (t) => `爱彼迎日历更新时间：${t}`,
+        loading: "加载中...",
+        loadError: "无法加载房间信息，请稍后刷新页面。"
       }
     };
+
+    const LOCALE = { ko: "ko-KR", en: "en-US", zh: "zh-CN" };
 
     let lang = "ko";
     let selectedFloor = "all";
     let rooms = [];
     let availability = { updated_at: "", rooms: {} };
+    let loadError = false;
 
     function fmtDate(d) {
       const y = d.getFullYear();
       const m = String(d.getMonth() + 1).padStart(2, "0");
       const day = String(d.getDate()).padStart(2, "0");
       return `${y}-${m}-${day}`;
+    }
+
+    function todayStr() {
+      return fmtDate(new Date());
     }
 
     function addDays(dateStr, n) {
@@ -326,13 +524,97 @@
       return Math.max(1, Math.round((d2 - d1) / 86400000));
     }
 
+    function prettyDate(dateStr) {
+      if (!dateStr) return "-";
+      const d = new Date(dateStr + "T00:00:00");
+      if (isNaN(d.getTime())) return dateStr;
+      try {
+        return new Intl.DateTimeFormat(LOCALE[lang], { month: "short", day: "numeric", weekday: "short" }).format(d);
+      } catch (e) {
+        return dateStr;
+      }
+    }
+
     function isAvailable(listingId, checkIn, checkOut) {
-      const info = availability.rooms?.[listingId];
+      const info = (availability.rooms || {})[listingId];
       if (!info || !Array.isArray(info.blocked)) return true;
       for (const [s, e] of info.blocked) {
         if (checkIn < e && checkOut > s) return false;
       }
       return true;
+    }
+
+    function detectLang() {
+      const q = new URLSearchParams(window.location.search).get("lang");
+      if (q && i18n[q]) return q;
+      const nav = (navigator.language || "").toLowerCase();
+      if (nav.startsWith("zh")) return "zh";
+      if (nav.startsWith("en")) return "en";
+      return "ko";
+    }
+
+    function setLang(next) {
+      lang = i18n[next] ? next : "ko";
+      const t = i18n[lang];
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+      document.querySelectorAll(".lang-btn").forEach((b) => {
+        const on = b.dataset.lang === lang;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      try {
+        const u = new URL(window.location.href);
+        u.searchParams.set("lang", lang);
+        history.replaceState(null, "", u.toString());
+      } catch (e) { /* file:// 등 */ }
+      render();
+    }
+
+    function quickRange(id) {
+      const today = todayStr();
+      if (id === "today1") return [today, addDays(today, 1)];
+      if (id === "tomorrow1") return [addDays(today, 1), addDays(today, 2)];
+      if (id === "today2") return [today, addDays(today, 2)];
+      return [today, addDays(today, 1)];
+    }
+
+    function activeQuickId(checkIn, checkOut) {
+      const today = todayStr();
+      const map = {
+        today1: [today, addDays(today, 1)],
+        tomorrow1: [addDays(today, 1), addDays(today, 2)],
+        today2: [today, addDays(today, 2)]
+      };
+      for (const k of Object.keys(map)) {
+        if (map[k][0] === checkIn && map[k][1] === checkOut) return k;
+      }
+      return null;
+    }
+
+    function renderChips() {
+      const t = i18n[lang];
+      const el = document.getElementById("quickChips");
+      const checkIn = document.getElementById("checkIn").value;
+      const checkOut = document.getElementById("checkOut").value;
+      const active = activeQuickId(checkIn, checkOut);
+      el.innerHTML = "";
+      t.chips.forEach((c) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip" + (active === c.id ? " active" : "");
+        b.textContent = c.label;
+        b.onclick = () => {
+          const [a, z] = quickRange(c.id);
+          const ci = document.getElementById("checkIn");
+          const co = document.getElementById("checkOut");
+          ci.value = a;
+          co.value = z;
+          co.min = addDays(a, 1);
+          render();
+        };
+        el.appendChild(b);
+      });
     }
 
     function renderFloors() {
@@ -360,14 +642,20 @@
       document.getElementById("checkInLabel").textContent = t.checkIn;
       document.getElementById("checkOutLabel").textContent = t.checkOut;
       document.getElementById("onlyAvailLabel").textContent = t.onlyAvail;
-      document.getElementById("langBtn").textContent = t.langNext;
+      document.getElementById("stepsTitle").textContent = t.stepsTitle;
+      document.getElementById("stepsList").innerHTML = t.steps
+        .map((s, i) => `<li><span class="num">${i + 1}</span><span>${s}</span></li>`)
+        .join("");
+      document.getElementById("noticeText").innerHTML = t.notice;
 
+      renderChips();
       renderFloors();
 
-      const checkIn = document.getElementById("checkIn").value;
-      const checkOut = document.getElementById("checkOut").value;
+      const checkIn = document.getElementById("checkIn").value || todayStr();
+      const checkOut = document.getElementById("checkOut").value || addDays(checkIn, 1);
       const onlyAvail = document.getElementById("onlyAvail").checked;
       const nights = diffDays(checkIn, checkOut);
+      document.getElementById("staysText").textContent = t.stays(prettyDate(checkIn), prettyDate(checkOut), nights);
 
       const floorRooms = rooms.filter((r) => selectedFloor === "all" || r.floor === selectedFloor);
       const enriched = floorRooms.map((r) => ({
@@ -376,31 +664,50 @@
       }));
 
       const availCount = enriched.filter((r) => r.available).length;
-      document.getElementById("summaryText").innerHTML = t.summary(availCount, enriched.length, nights);
+      document.getElementById("summaryText").innerHTML = loadError
+        ? t.loadError
+        : t.summary(availCount, enriched.length);
 
       const visible = onlyAvail ? enriched.filter((r) => r.available) : enriched;
       const listEl = document.getElementById("roomList");
       listEl.innerHTML = "";
 
       if (visible.length === 0) {
-        listEl.innerHTML = `<div class="empty-state">${t.empty}</div>`;
+        listEl.innerHTML = `<div class="empty-state">${loadError ? t.loadError : t.empty}</div>`;
       } else {
         visible.forEach((r) => {
           const card = document.createElement("div");
           card.className = "room-card" + (r.available ? "" : " booked");
           const bookUrl = `${r.room_url}?check_in=${encodeURIComponent(checkIn)}&check_out=${encodeURIComponent(checkOut)}`;
-          card.innerHTML = `
-            <div class="room-meta">
-              <div class="room-top">
-                <span class="room-num">${r.room}</span>
-                <span class="badge ${r.available ? "ok" : "no"}">${r.available ? t.avail : t.booked}</span>
-              </div>
-              <div class="room-sub">${t.floor(r.floor)} · ${r.title}</div>
-            </div>
-            <a class="book-btn ${r.available ? "" : "disabled"}" href="${bookUrl}" target="_blank" rel="noopener">
-              ${r.available ? t.bookBtn : t.bookedBtn}
-            </a>
-          `;
+          const num = document.createElement("span");
+          num.className = "room-num";
+          num.textContent = r.room;
+          const badge = document.createElement("span");
+          badge.className = "badge " + (r.available ? "ok" : "no");
+          badge.textContent = r.available ? t.avail : t.booked;
+
+          const meta = document.createElement("div");
+          meta.className = "room-meta";
+          const top = document.createElement("div");
+          top.className = "room-top";
+          top.append(num, badge);
+          const sub = document.createElement("div");
+          sub.className = "room-sub";
+          sub.textContent = t.roomSub(r.floor);
+          meta.append(top, sub);
+
+          const link = document.createElement("a");
+          link.className = "book-btn" + (r.available ? "" : " disabled");
+          link.href = bookUrl;
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.textContent = r.available ? t.bookBtn : t.bookedBtn;
+          if (!r.available) {
+            link.removeAttribute("href");
+            link.setAttribute("aria-disabled", "true");
+          }
+
+          card.append(meta, link);
           listEl.appendChild(card);
         });
       }
@@ -408,11 +715,11 @@
       const syncTime = availability.updated_at
         ? availability.updated_at.replace("T", " ").replace("+09:00", " KST")
         : "-";
-      document.getElementById("syncFooter").textContent = t.synced(syncTime);
+      document.getElementById("syncFooter").textContent = t.synced(syncTime) + " · KR / EN / 中文";
     }
 
     async function init() {
-      const today = fmtDate(new Date());
+      const today = todayStr();
       const checkInEl = document.getElementById("checkIn");
       const checkOutEl = document.getElementById("checkOut");
       checkInEl.min = today;
@@ -421,26 +728,49 @@
       checkOutEl.value = addDays(today, 1);
 
       checkInEl.addEventListener("change", () => {
+        if (!checkInEl.value) checkInEl.value = today;
         if (checkOutEl.value <= checkInEl.value) {
           checkOutEl.value = addDays(checkInEl.value, 1);
         }
         checkOutEl.min = addDays(checkInEl.value, 1);
         render();
       });
-      checkOutEl.addEventListener("change", render);
-      document.getElementById("onlyAvail").addEventListener("change", render);
-      document.getElementById("langBtn").addEventListener("click", () => {
-        lang = lang === "ko" ? "en" : "ko";
+      checkOutEl.addEventListener("change", () => {
+        if (!checkOutEl.value) checkOutEl.value = addDays(checkInEl.value || today, 1);
+        if (checkOutEl.value <= checkInEl.value) {
+          checkOutEl.value = addDays(checkInEl.value, 1);
+        }
         render();
       });
+      document.getElementById("onlyAvail").addEventListener("change", render);
+      document.querySelectorAll(".lang-btn").forEach((b) => {
+        b.addEventListener("click", () => setLang(b.dataset.lang));
+      });
 
-      const [rRes, aRes] = await Promise.all([
-        fetch("./rooms.json", { cache: "no-store" }),
-        fetch("./availability.json", { cache: "no-store" }).catch(() => null)
-      ]);
-      rooms = await rRes.json();
-      if (aRes && aRes.ok) {
-        availability = await aRes.json();
+      lang = detectLang();
+      const t0 = i18n[lang];
+      document.documentElement.lang = t0.htmlLang;
+      document.title = t0.pageTitle;
+      document.querySelectorAll(".lang-btn").forEach((b) => {
+        const on = b.dataset.lang === lang;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      render();
+
+      try {
+        const [rRes, aRes] = await Promise.all([
+          fetch("./rooms.json", { cache: "no-store" }),
+          fetch("./availability.json", { cache: "no-store" }).catch(() => null)
+        ]);
+        rooms = await rRes.json();
+        if (aRes && aRes.ok) {
+          availability = await aRes.json();
+        }
+        loadError = false;
+      } catch (e) {
+        rooms = [];
+        loadError = true;
       }
       render();
     }
