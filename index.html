@@ -447,6 +447,7 @@
         booked: "예약 마감",
         bookBtn: "에어비앤비 예약",
         bookedBtn: "마감",
+        bookChecking: "확인 중…",
         chips: [
           { id: "today1", label: "오늘 1박" },
           { id: "tomorrow1", label: "내일 1박" },
@@ -484,6 +485,7 @@
         booked: "Booked",
         bookBtn: "Book on Airbnb",
         bookedBtn: "Unavailable",
+        bookChecking: "Checking…",
         chips: [
           { id: "today1", label: "Tonight · 1 night" },
           { id: "tomorrow1", label: "Tomorrow · 1 night" },
@@ -521,6 +523,7 @@
         booked: "已满房",
         bookBtn: "在爱彼迎预订",
         bookedBtn: "已满房",
+        bookChecking: "确认中…",
         chips: [
           { id: "today1", label: "今晚1晚" },
           { id: "tomorrow1", label: "明晚1晚" },
@@ -552,6 +555,9 @@
     let liveState = "off";
     let lastLiveAt = 0;
     let lastLiveTry = 0;
+    // 실시간 조회가 끝나기 전에는 예약 버튼을 잠가 둡니다(엇갈린 안내 방지).
+    let isCheckingLive = false;
+    let liveCheckSeq = 0;
 
     function fmtDate(d) {
       const y = d.getFullYear();
@@ -617,18 +623,23 @@
       updateLiveLine();
     }
 
-    async function refreshLive() {
+    // fresh=true 이면 Worker 의 20초 메모리 캐시를 건너뛰도록 ?fresh=1 을 붙입니다.
+    async function refreshLive(fresh) {
       if (!LIVE_API_URL) {
         setLiveState("off");
         return;
       }
+      const seq = ++liveCheckSeq;
       lastLiveTry = Date.now();
+      isCheckingLive = true;
       setLiveState("checking");
+      render(); // 실시간 확인 중에는 예약 버튼을 '확인 중…' 으로 잠급니다
       const ctrl = new AbortController();
       const timer = setTimeout(() => ctrl.abort(), 8000);
       try {
         const sep = LIVE_API_URL.indexOf("?") === -1 ? "?" : "&";
-        const res = await fetch(LIVE_API_URL + sep + "t=" + Date.now(), {
+        const qs = (fresh ? "fresh=1&" : "") + "t=" + Date.now();
+        const res = await fetch(LIVE_API_URL + sep + qs, {
           cache: "no-store",
           signal: ctrl.signal
         });
@@ -636,14 +647,19 @@
         const data = await res.json();
         const ids = Object.keys((data && data.rooms) || {});
         if (!ids.length) throw new Error("empty payload");
+        if (seq !== liveCheckSeq) return; // 더 새로운 조회가 시작됐으면 이 응답은 버립니다
         availability = { updated_at: data.updated_at || "", rooms: data.rooms };
         lastLiveAt = Date.now();
         setLiveState("ok");
-        render();
       } catch (e) {
-        setLiveState("stale");
+        if (seq === liveCheckSeq) setLiveState("stale");
       } finally {
         clearTimeout(timer);
+        // 성공·실패(폴백) 어느 쪽이든 끝나는 즉시 버튼을 다시 엽니다.
+        if (seq === liveCheckSeq) {
+          isCheckingLive = false;
+          render();
+        }
       }
     }
 
@@ -801,12 +817,16 @@
           meta.append(top, sub);
 
           const link = document.createElement("a");
-          link.className = "book-btn" + (r.available ? "" : " disabled");
+          link.className = "book-btn" + (r.available && !isCheckingLive ? "" : " disabled");
           link.href = bookUrl;
           link.target = "_blank";
           link.rel = "noopener";
-          link.textContent = r.available ? t.bookBtn : t.bookedBtn;
-          if (!r.available) {
+          link.textContent = isCheckingLive ? t.bookChecking : r.available ? t.bookBtn : t.bookedBtn;
+          if (isCheckingLive) {
+            link.removeAttribute("href");
+            link.setAttribute("aria-disabled", "true");
+            link.setAttribute("aria-busy", "true");
+          } else if (!r.available) {
             link.removeAttribute("href");
             link.setAttribute("aria-disabled", "true");
           }
@@ -878,11 +898,20 @@
       }
       render();
 
-      // 정적 availability.json 으로 먼저 그린 뒤, Worker 실시간 조회로 백그라운드 갱신
-      refreshLive();
+      // 정적 availability.json 으로 먼저 그린 뒤, Worker 실시간 조회로 갱신
+      // (새로고침으로 들어온 경우엔 캐시를 건너뛰고 ?fresh=1 로 조회)
+      const navType = (performance.getEntriesByType("navigation")[0] || {}).type;
+      refreshLive(navType === "reload");
+
+      // 복귀·뒤로가기 캐시 복원 시에도 Worker 의 20초 캐시를 건너뜁니다(?fresh=1).
+      window.addEventListener("pageshow", () => {
+        if (!LIVE_API_URL) return;
+        if (Date.now() - lastLiveTry < 3000) return;
+        refreshLive(true);
+      });
       document.addEventListener("visibilitychange", () => {
         if (document.visibilityState !== "visible" || !LIVE_API_URL) return;
-        if (Date.now() - Math.max(lastLiveAt, lastLiveTry) > 60000) refreshLive();
+        if (Date.now() - Math.max(lastLiveAt, lastLiveTry) > 3000) refreshLive(true);
       });
     }
 
