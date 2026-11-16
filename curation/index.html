@@ -3,36 +3,44 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#F7F4ED" />
+<meta name="theme-color" content="#F5F4F0" />
 <title>대구여행 큐레이션 · 노멀캐비넷 교동점</title>
-<meta name="description" content="교동 골목에서 걸어 나가며 고른 대구 35곳 — 로컬 맛집, 카페와 바, 러닝 코스, 명소와 야경, 근처 편의. 거리·영업시간·지도 링크까지 한 장에. 한국어 / English / 中文." />
+<meta name="description" content="호텔 노멀캐비넷 교동점이 고른 대구 36곳 — 로컬 맛집, 카페와 바, 러닝 코스, 명소와 야경, 편의·약국·마트. 거리·영업시간·지도 링크까지 한 장에. 한국어 / English / 中文." />
 <meta property="og:title" content="대구여행 큐레이션 · normal cabinet." />
-<meta property="og:description" content="교동에서 걷고 달리고 먹는 35곳 — 3개 언어, 지도 링크 포함." />
+<meta property="og:description" content="교동에서 걷고 달리고 먹는 36곳 — 3개 언어, 지도 링크 포함." />
 <meta property="og:type" content="website" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4ED'/%3E%3Crect x='7' y='16' width='5' height='5' fill='%231A1A1A'/%3E%3Crect x='14' y='9' width='5' height='5' fill='%231A1A1A'/%3E%3Crect x='21' y='16' width='5' height='5' fill='%231A1A1A'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5F4F0'/%3E%3Crect x='5' y='7' width='22' height='2.6' fill='%2318181B'/%3E%3Crect x='5' y='13' width='22' height='2.6' fill='%2318181B'/%3E%3Crect x='5' y='19' width='14' height='2.6' fill='%23B45342'/%3E%3C/svg%3E" />
 <link rel="preload" as="image" href="assets/hero.jpg" />
+<link rel="preload" href="assets/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin />
 <style>
+  @font-face{
+    font-family:"Inter Tight";font-style:normal;font-weight:100 900;font-display:swap;
+    src:url("assets/fonts/inter-tight.woff2") format("woff2");
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+00B0,U+00B7,U+00D7,U+2013,U+2014,U+2018,U+2019,U+201C,U+201D,U+2022,U+2026,U+2032,U+2033;
+  }
   :root{
-    --paper:#F7F4ED;
-    --card:#FFFCF6;
-    --ink:#1A1A1A;
-    --ink-soft:#4B4842;
-    --muted:#857F74;
-    --line:rgba(26,26,26,.13);
-    --line-soft:rgba(26,26,26,.07);
-    --terra:#B4552F;
-    --sage:#6F7D62;
-    --sage-bg:#E8EBDD;
-    --hdr:58px;
-    --tabs:48px;
-    --max:1100px;
+    --paper:#F5F4F0;
+    --card:#FCFBF8;
+    --ink:#18181B;
+    --ink-soft:#3F3F44;
+    --muted:#8A8C90;
+    --steel:#E6E7E8;
+    --steel-2:#D5D7DA;
+    --hairline:#C4C7CC;
+    --terra:#B45342;
+    --terra-deep:#9E4435;
+    --line:rgba(24,24,27,.14);
+    --line-soft:rgba(24,24,27,.075);
+    --hdr:56px;
+    --tabs:46px;
+    --max:1080px;
+    --sans:"Inter Tight",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   body{
     margin:0;background:var(--paper);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Helvetica Neue","Noto Sans KR","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-    line-height:1.5;font-size:16px;
+    font-family:var(--sans);line-height:1.5;font-size:16px;
     -webkit-font-smoothing:antialiased;
     word-break:keep-all;
   }
@@ -40,145 +48,149 @@
   a{color:inherit}
   button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 
   /* ── header ── */
   .hdr{
     position:sticky;top:0;z-index:60;height:var(--hdr);
-    display:flex;align-items:center;gap:12px;
-    padding:0 18px;background:rgba(247,244,237,.92);
-    backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);
-    border-bottom:1px solid var(--line-soft);
+    display:flex;align-items:center;gap:14px;
+    padding:0 22px;background:rgba(245,244,240,.9);
+    backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);
+    border-bottom:1px solid var(--hairline);
   }
-  .mark{display:flex;flex-direction:column;line-height:.9;letter-spacing:-.045em;font-weight:800;font-size:14px;flex:none}
+  .mark{display:flex;flex-direction:column;line-height:.92;letter-spacing:-.045em;font-weight:700;font-size:13.5px;flex:none}
   .mark span{display:flex;align-items:flex-end}
-  .mark i{display:inline-block;width:4px;height:4px;background:var(--ink);margin-left:2px;margin-bottom:2px}
-  .hdr-sep{width:1px;height:18px;background:var(--line);flex:none}
-  .hdr-title{font-size:13px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink-soft)}
-  .lang{margin-left:auto;display:flex;gap:2px;background:rgba(26,26,26,.055);border-radius:999px;padding:3px;flex:none}
-  .lang button{padding:5px 9px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.02em;color:var(--muted);transition:.18s}
-  .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .mark i{display:inline-block;width:4px;height:4px;background:var(--ink);margin-left:2px;margin-bottom:1px}
+  .hdr-coords{font-size:10px;font-weight:500;letter-spacing:.08em;color:var(--muted);white-space:nowrap;flex:none;font-variant-numeric:tabular-nums}
+  .lang{margin-left:auto;display:flex;gap:2px;border:1px solid var(--hairline);border-radius:999px;padding:3px;flex:none;background:rgba(255,255,255,.6)}
+  .lang button{padding:4px 10px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--muted);transition:.18s}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:#F5F4F0}
 
   /* ── tabs ── */
   .tabs{
     position:sticky;top:var(--hdr);z-index:50;
-    display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;
-    padding:10px 18px;background:rgba(247,244,237,.95);
-    backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);
-    border-bottom:1px solid var(--line-soft);
+    display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+    padding:9px 22px;background:rgba(245,244,240,.93);
+    backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);
+    border-bottom:1px solid var(--hairline);
   }
   .tabs::-webkit-scrollbar{display:none}
   .tab{
-    flex:none;padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600;
-    color:var(--ink-soft);border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap;
+    flex:none;padding:6px 12px;border-radius:2px;font-size:12.5px;font-weight:600;
+    color:var(--ink-soft);border:1px solid transparent;background:transparent;transition:.16s;white-space:nowrap;
   }
-  .tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .tab .n{font-size:10.5px;opacity:.5;margin-left:4px;font-variant-numeric:tabular-nums}
+  .tab[aria-selected="true"]{background:var(--ink);color:#F5F4F0}
+  .tab .n{font-size:10px;opacity:.45;margin-left:5px;font-variant-numeric:tabular-nums}
 
   /* ── hero ── */
-  .hero{padding:26px 0 0}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-  .eyebrow{font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 14px}
+  .hero{padding:34px 0 0}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;border-bottom:1px solid var(--hairline);padding-bottom:10px}
+  .eyebrow{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);font-weight:700;margin:26px 0 16px}
   .hero h1{
-    margin:0;font-size:clamp(38px,11.4vw,68px);line-height:.96;letter-spacing:-.05em;font-weight:800;
+    margin:0;font-size:clamp(40px,10.5vw,74px);line-height:.98;letter-spacing:-.045em;font-weight:700;
   }
   .hero h1 em{font-style:normal;color:var(--terra)}
-  .lede{margin:16px 0 0;font-size:15px;line-height:1.62;color:var(--ink-soft);max-width:44ch}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0;padding:0;list-style:none}
-  .chips li{font-size:11.5px;font-weight:700;letter-spacing:.01em;padding:5px 10px;border-radius:6px;background:rgba(26,26,26,.055);color:var(--ink-soft)}
-  .hero-art{position:relative;margin:24px 0 0;overflow:hidden;background:#E9E2D6}
-  .hero-art img{width:100%;height:clamp(300px,58vh,520px);object-fit:cover;object-position:center 62%}
-  .hero-art .art-cap{
-    position:absolute;right:14px;bottom:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-    color:#F7F4ED;background:rgba(26,26,26,.55);padding:4px 8px;border-radius:4px;backdrop-filter:blur(4px)
+  .lede{margin:18px 0 0;font-size:15px;line-height:1.65;color:var(--ink-soft);max-width:46ch}
+  .chips{display:flex;flex-wrap:wrap;gap:0;margin:22px 0 0;padding:0;list-style:none;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+  .chips li{
+    font-size:11px;font-weight:600;letter-spacing:.05em;padding:9px 16px;color:var(--ink-soft);
+    border-right:1px solid var(--hairline);text-transform:uppercase;font-variant-numeric:tabular-nums;
+  }
+  .chips li:first-child{padding-left:2px}
+  .chips li:last-child{border-right:0}
+  .hero-art{position:relative;margin:30px 0 0;overflow:hidden;background:#DBD3C7}
+  .hero-art img{width:100%;height:clamp(320px,56vh,540px);object-fit:cover;object-position:center 30%}
+  .hero-art::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(24,24,27,.12);pointer-events:none}
+  .art-cap{
+    position:absolute;left:0;bottom:0;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:#F5F4F0;background:rgba(24,24,27,.82);padding:7px 14px;font-weight:600;
   }
   .base{
-    display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;
-    margin:0;padding:13px 20px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line-soft)
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;
+    margin:0;padding:14px 22px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--hairline);
   }
-  .base b{color:var(--ink);font-weight:700;font-size:12.5px}
-  .base span{display:inline-flex;align-items:center;gap:5px}
+  .base b{color:var(--ink);font-weight:600;font-size:12.5px}
+  .base span{display:inline-flex;align-items:center;gap:6px}
+  .base .dot{width:3px;height:3px;background:var(--terra);border-radius:50%;flex:none}
 
   /* ── sections ── */
-  .sec{padding:44px 0 6px;scroll-margin-top:calc(var(--hdr) + var(--tabs) + 8px)}
-  .sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
-  .sec-num{font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--terra);padding-top:6px;flex:none;font-variant-numeric:tabular-nums}
+  .sec{padding:52px 0 8px;scroll-margin-top:calc(var(--hdr) + var(--tabs) + 8px)}
+  .sec-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:22px;padding-top:16px;border-top:1px solid var(--ink)}
+  .sec-num{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--terra);padding-top:8px;flex:none;font-variant-numeric:tabular-nums}
   .sec-tt{flex:1;min-width:0}
-  .sec-tt h2{margin:0;font-size:clamp(21px,5.6vw,28px);letter-spacing:-.035em;font-weight:800;line-height:1.15}
-  .sec-tt p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
-  .sec-art{width:64px;height:64px;border-radius:12px;overflow:hidden;flex:none;background:#E9E2D6}
+  .sec-tt h2{margin:0;font-size:clamp(21px,5.4vw,27px);letter-spacing:-.03em;font-weight:700;line-height:1.18}
+  .sec-tt p{margin:6px 0 0;font-size:12.5px;color:var(--muted);line-height:1.5}
+  .sec-art{width:72px;height:72px;overflow:hidden;flex:none;outline:1px solid var(--hairline);outline-offset:-1px}
   .sec-art img{width:100%;height:100%;object-fit:cover}
-  .sec-note{font-size:11.5px;color:var(--muted);margin:0 0 14px}
+  .sec-note{font-size:11px;color:var(--muted);margin:0 0 14px}
 
-  .grid{display:grid;gap:12px;grid-template-columns:1fr}
-  @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+  .grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
 
   .card{
-    position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:16px 16px 14px;display:flex;flex-direction:column;transition:transform .16s,border-color .16s,box-shadow .16s;
+    position:relative;background:var(--card);border:1px solid var(--hairline);border-radius:2px;
+    padding:18px 18px 16px;display:flex;flex-direction:column;transition:border-color .16s,box-shadow .16s;
   }
-  .card:hover{transform:translateY(-2px);border-color:rgba(26,26,26,.28);box-shadow:0 10px 26px -18px rgba(26,26,26,.5)}
-  .card:focus-within{border-color:var(--ink)}
-  .card-link{position:absolute;inset:0;border-radius:16px;z-index:1}
+  .card:hover{border-color:var(--ink);box-shadow:0 12px 30px -22px rgba(24,24,27,.45)}
+  .card-link{position:absolute;inset:0;border-radius:2px;z-index:1}
   .card-link:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-  .card-top{display:flex;align-items:center;gap:6px;margin-bottom:10px;min-height:20px}
-  .badge{font-size:10px;font-weight:800;letter-spacing:.02em;padding:3px 7px;border-radius:4px;white-space:nowrap}
-  .badge.f{background:var(--ink);color:var(--paper)}
-  .badge.h{background:var(--sage-bg);color:#4E5B43}
-  .badge.p{background:rgba(26,26,26,.06);color:var(--ink-soft)}
-  .walk{margin-left:auto;font-size:11px;font-weight:700;color:var(--ink-soft);display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
-  .walk svg{width:11px;height:11px;flex:none;opacity:.75}
-  .card h3{margin:0 0 6px;font-size:17.5px;font-weight:750;letter-spacing:-.025em;line-height:1.28}
-  .card .sub{font-size:10.5px;letter-spacing:.06em;color:var(--muted);margin:0 0 8px;font-weight:600}
-  .card p.desc{margin:0 0 11px;font-size:13.5px;line-height:1.56;color:var(--ink-soft)}
-  .meta{display:flex;flex-direction:column;gap:3px;margin:0 0 10px;padding:9px 0 0;border-top:1px dashed var(--line-soft)}
-  .meta .row{display:flex;gap:7px;font-size:11.5px;line-height:1.45}
-  .meta .k{flex:none;width:30px;color:var(--muted);font-weight:700;letter-spacing:.02em;font-size:10px;padding-top:1px}
+  .card-top{display:flex;align-items:center;gap:8px;margin-bottom:12px;min-height:18px}
+  .badge{font-size:9px;font-weight:700;letter-spacing:.14em;padding:3px 8px 2px;white-space:nowrap;text-transform:uppercase}
+  .badge.f{background:var(--ink);color:#F5F4F0}
+  .badge.h{color:var(--terra);border:1px solid var(--terra)}
+  .badge.p{color:var(--ink-soft);border:1px solid var(--hairline)}
+  .walk{margin-left:auto;font-size:10.5px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:4px;white-space:nowrap;letter-spacing:.02em}
+  .walk svg{width:10px;height:10px;flex:none;opacity:.7}
+  .card h3{margin:0 0 5px;font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.3}
+  .card .sub{font-size:10px;letter-spacing:.09em;color:var(--muted);margin:0 0 9px;font-weight:600;text-transform:uppercase}
+  .card p.desc{margin:0 0 12px;font-size:13px;line-height:1.6;color:var(--ink-soft)}
+  .meta{display:flex;flex-direction:column;gap:3px;margin:0 0 11px;padding:10px 0 0;border-top:1px solid var(--line-soft)}
+  .meta .row{display:flex;gap:8px;font-size:11.5px;line-height:1.45}
+  .meta .k{flex:none;width:34px;color:var(--muted);font-weight:600;letter-spacing:.06em;font-size:9.5px;padding-top:2px;text-transform:uppercase}
   .meta .v{color:var(--ink-soft)}
-  .tip{font-size:11.5px;line-height:1.5;color:var(--terra);font-weight:600;margin:0 0 12px}
-  .tip b{font-weight:800;letter-spacing:.08em;font-size:9.5px;vertical-align:1px;margin-right:4px}
-  .maprow{display:flex;gap:6px;margin-top:auto;position:relative;z-index:2}
+  .tip{font-size:11.5px;line-height:1.5;color:var(--terra-deep);font-weight:500;margin:0 0 13px}
+  .tip b{font-weight:700;letter-spacing:.1em;font-size:9px;vertical-align:1px;margin-right:5px;text-transform:uppercase}
+  .maprow{display:flex;gap:0;margin-top:auto;position:relative;z-index:2;border:1px solid var(--hairline)}
   .mapbtn{
     flex:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;
-    padding:8px 6px;border:1px solid var(--line);border-radius:9px;
-    font-size:11.5px;font-weight:700;color:var(--ink-soft);text-decoration:none;transition:.16s;white-space:nowrap;
+    padding:8px 6px;font-size:11px;font-weight:600;color:var(--ink-soft);text-decoration:none;transition:.16s;white-space:nowrap;
   }
-  .mapbtn svg{width:11px;height:11px;opacity:.7;flex:none}
-  .mapbtn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .mapbtn:hover svg{opacity:1}
-  .mapbtn.nv{border-color:rgba(3,199,90,.4)}
-  .mapbtn.nv:hover{background:#03C75A;border-color:#03C75A;color:#fff}
+  .mapbtn + .mapbtn{border-left:1px solid var(--hairline)}
+  .mapbtn svg{width:10px;height:10px;opacity:.7;flex:none}
+  .mapbtn:hover{background:var(--ink);color:#F5F4F0;border-color:var(--ink)}
 
   /* ── routes ── */
-  .routes{margin-top:52px;padding:38px 0 10px;border-top:1px solid var(--line)}
-  .routes-head{margin-bottom:22px}
-  .routes-head h2{margin:0;font-size:clamp(23px,6vw,32px);letter-spacing:-.04em;font-weight:800}
-  .routes-head p{margin:8px 0 0;font-size:13px;color:var(--muted);max-width:52ch;line-height:1.55}
-  .routes-art{margin:0 0 20px;overflow:hidden;border-radius:14px;background:#E9E2D6}
-  .routes-art img{width:100%;height:clamp(140px,26vh,220px);object-fit:cover}
-  .rgrid{display:grid;gap:12px;grid-template-columns:1fr}
+  .routes{margin-top:56px;padding:0 0 8px}
+  .routes .sec-head{border-top:1px solid var(--ink)}
+  .routes-art{margin:0 0 24px;overflow:hidden;position:relative;background:#E7E3DB}
+  .routes-art img{width:100%;height:clamp(150px,26vh,230px);object-fit:cover}
+  .routes-art::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(24,24,27,.12);pointer-events:none}
+  .rgrid{display:grid;gap:14px;grid-template-columns:1fr}
   @media(min-width:860px){.rgrid{grid-template-columns:repeat(3,1fr)}}
-  .route{background:var(--ink);color:var(--paper);border-radius:18px;padding:20px 18px;display:flex;flex-direction:column}
-  .route .rtag{align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#F2C9A8;border:1px solid rgba(242,201,168,.4);padding:3px 7px;border-radius:4px;margin-bottom:12px}
-  .route h3{margin:0 0 4px;font-size:17px;letter-spacing:-.02em;line-height:1.3;font-weight:750}
-  .route .rmeta{font-size:11.5px;color:rgba(247,244,237,.6);margin:0 0 16px}
+  .route{background:var(--ink);color:#F5F4F0;border-radius:2px;padding:22px 20px;display:flex;flex-direction:column}
+  .route .rtag{align-self:flex-start;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E4A38F;border:1px solid rgba(228,163,143,.45);padding:3px 8px 2px;margin-bottom:14px}
+  .route h3{margin:0 0 5px;font-size:16.5px;letter-spacing:-.015em;line-height:1.32;font-weight:600}
+  .route .rmeta{font-size:11px;color:rgba(245,244,240,.55);margin:0 0 18px;font-variant-numeric:tabular-nums}
   .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
-  .steps li{position:relative;display:flex;gap:10px;padding:0 0 13px 15px;border-left:1px solid rgba(247,244,237,.18)}
+  .steps li{position:relative;display:flex;gap:12px;padding:0 0 13px 16px;border-left:1px solid rgba(245,244,240,.16)}
   .steps li:last-child{padding-bottom:0;border-left-color:transparent}
-  .steps li::before{content:"";position:absolute;left:-3.5px;top:6px;width:6px;height:6px;border-radius:50%;background:var(--terra)}
-  .steps li:last-child::before{background:#F2C9A8}
-  .steps .st{flex:none;font-size:10.5px;font-variant-numeric:tabular-nums;color:rgba(247,244,237,.55);width:34px;padding-top:2px;letter-spacing:.02em}
-  .steps .sn{font-size:12.5px;line-height:1.45;color:rgba(247,244,237,.94)}
+  .steps li::before{content:"";position:absolute;left:-3.5px;top:5px;width:6px;height:6px;background:var(--terra)}
+  .steps li:last-child::before{background:rgba(245,244,240,.4)}
+  .steps .st{flex:none;font-size:10px;font-variant-numeric:tabular-nums;color:rgba(245,244,240,.5);width:36px;padding-top:2px;letter-spacing:.04em}
+  .steps .sn{font-size:12px;line-height:1.5;color:rgba(245,244,240,.93)}
+  .steps .sn small{display:block;font-size:10px;color:rgba(245,244,240,.5);margin-top:1px;letter-spacing:.02em}
 
   /* ── footer ── */
-  .foot{margin-top:46px;border-top:1px solid var(--line);padding:26px 0 46px}
-  .foot .brand{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:14px}
-  .foot .mark{font-size:19px}
+  .foot{margin-top:52px;border-top:1px solid var(--ink);padding:30px 0 48px}
+  .foot .brand{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:16px}
+  .foot .mark{font-size:20px}
   .foot .mark i{width:5px;height:5px}
-  .foot .est{font-size:9.5px;letter-spacing:.13em;color:var(--muted);text-align:right;line-height:1.5;text-transform:uppercase;font-weight:700}
+  .foot .est{font-size:9.5px;letter-spacing:.16em;color:var(--muted);text-align:right;line-height:1.6;text-transform:uppercase;font-weight:600}
+  .foot .coords{font-size:10px;letter-spacing:.1em;color:var(--muted);margin:0 0 6px;font-variant-numeric:tabular-nums;font-weight:600;text-transform:uppercase}
   .foot .addr{font-size:12.5px;color:var(--ink-soft);margin:0 0 4px;font-weight:600}
-  .foot .fine{font-size:11px;line-height:1.6;color:var(--muted);margin:10px 0 0;max-width:56ch}
-  .foot .top{display:inline-block;margin-top:16px;font-size:11.5px;font-weight:700;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .foot .fine{font-size:11px;line-height:1.65;color:var(--muted);margin:10px 0 0;max-width:58ch}
+  .foot .top{display:inline-block;margin-top:16px;font-size:11px;font-weight:600;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--hairline);padding-bottom:2px;letter-spacing:.06em;text-transform:uppercase}
   .hidden{display:none !important}
   @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -187,8 +199,7 @@
 
 <header class="hdr">
   <a class="mark" href="../" aria-label="normal cabinet."><span>normal</span><span>cabinet<i></i></span></a>
-  <div class="hdr-sep" aria-hidden="true"></div>
-  <div class="hdr-title" data-i18n="hdrTitle">대구여행 큐레이션</div>
+  <span class="hdr-coords" aria-hidden="true">35.873074° N&nbsp;·&nbsp;128.598387° E</span>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
     <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -201,18 +212,20 @@
 <main>
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow" data-i18n="eyebrow">DAEGU · GYODONG · CURATED 2026</p>
+      <div class="masthead" aria-hidden="true"><span>Daegu City Guide</span><span>Vol. 01</span></div>
+      <p class="eyebrow" data-i18n="eyebrow">HOTEL NORMAL CABINET · GYODONG · EST 2026 12 01</p>
       <h1 data-i18n-html="h1">대구, 하루는<br>이렇게.</h1>
       <p class="lede" data-i18n="lede"></p>
       <ul class="chips" id="chips"></ul>
     </div>
     <div class="hero-art">
-      <img src="assets/hero.jpg" width="960" height="1200" alt="교동 골목의 저녁 — 노멀캐비넷 큐레이션 일러스트" fetchpriority="high" />
-      <span class="art-cap">Normal Cabinet · Gyodong</span>
+      <img src="assets/hero.jpg" width="1000" height="1500" alt="테라코타 벽돌 호텔 파사드 — 노멀캐비넷 큐레이션 일러스트" fetchpriority="high" />
+      <span class="art-cap" data-i18n="artCap">Ordinary objects, better spaces</span>
     </div>
     <p class="base">
       <span data-i18n="baseLabel">기준 숙소</span>
       <b data-i18n="baseAddr">노멀캐비넷 교동점 · 대구 중구 교동2길 29-11</b>
+      <span class="dot" aria-hidden="true"></span>
       <span data-i18n="baseNote">중앙로역·대구역 도보 10분</span>
     </p>
   </section>
@@ -221,11 +234,11 @@
 
   <section class="routes" id="routes">
     <div class="wrap">
-      <div class="routes-head">
-        <h2 data-i18n="routesTitle">추천 동선</h2>
-        <p data-i18n="routesSub"></p>
+      <div class="sec-head">
+        <span class="sec-num">R</span>
+        <div class="sec-tt"><h2 data-i18n="routesTitle">추천 동선</h2><p data-i18n="routesSub"></p></div>
       </div>
-      <div class="routes-art"><img src="assets/route.jpg" width="960" height="640" alt="큐레이션 동선 일러스트" loading="lazy" /></div>
+      <div class="routes-art"><img src="assets/map.jpg" width="1600" height="1067" alt="대구 시티 맵 라인아트 — 큐레이션 동선 일러스트" loading="lazy" /></div>
       <div class="rgrid" id="rgrid"></div>
     </div>
   </section>
@@ -234,8 +247,9 @@
     <div class="wrap">
       <div class="brand">
         <div class="mark" aria-label="normal cabinet."><span>normal</span><span>cabinet<i></i></span></div>
-        <div class="est">Ordinary objects,<br>better spaces<br>Est. 2026</div>
+        <div class="est">Ordinary objects,<br>better spaces<br>Est. 2026 12 01</div>
       </div>
+      <p class="coords">35.873074° N · 128.598387° E</p>
       <p class="addr" data-i18n="footAddr">노멀캐비넷 교동점 · 대구 중구 교동2길 29-11</p>
       <p class="fine" data-i18n="footFine"></p>
       <a class="top" href="#top" data-i18n="toTop">위로</a>
@@ -243,7 +257,7 @@
   </footer>
 </main>
 
-<script src="assets/data.js?v=2026-11-16b"></script>
+<script src="assets/data.js?v=2026-11-16c"></script>
 <script>
 (function(){
   "use strict";
@@ -251,22 +265,23 @@
   var T = {
     ko: {
       title: "대구여행 큐레이션 · 노멀캐비넷 교동점",
-      desc: "교동에서 걸어 나가며 고른 대구 35곳 — 로컬 맛집, 카페와 바, 러닝 코스, 명소와 야경, 근처 편의. 거리·영업시간·지도 링크까지 한 장에.",
+      desc: "호텔 노멀캐비넷 교동점이 고른 대구 36곳 — 로컬 맛집, 카페와 바, 러닝 코스, 명소와 야경, 편의·약국·마트. 거리·영업시간·지도 링크까지 한 장에.",
       hdrTitle: "대구여행 큐레이션",
-      eyebrow: "DAEGU · GYODONG · CURATED 2026",
+      eyebrow: "HOTEL NORMAL CABINET · GYODONG · EST 2026 12 01",
       h1: "대구, 하루는<br><em>이렇게.</em>",
-      lede: "교동 골목에서 걸어 나가며 고른 35곳. 줄 서는 대표 맛집부터 로컬만 아는 작은 바까지 — 거리와 영업시간, 지도 링크를 한 장에 담았습니다.",
+      lede: "노멀캐비넷 교동점이 손님에게 건네는 대구 안내. 교동 골목에서 걸어 나가며 고른 36곳 — 줄 서는 대표 맛집부터 로컬만 아는 작은 바, 새벽의 편의점과 약국까지. 거리와 영업시간, 지도 링크를 한 장에 담았습니다.",
       baseLabel: "기준 숙소",
       baseAddr: "노멀캐비넷 교동점 · 대구 중구 교동2길 29-11",
       baseNote: "중앙로역·대구역 도보 10분",
-      chips: ["35곳", "5 카테고리", "3개 동선"],
+      artCap: "Ordinary objects, better spaces",
+      chips: ["36곳", "5 카테고리", "3개 동선", "지도 링크"],
       all: "전체", routes: "동선",
-      tabFood: "맛집", tabCafe: "카페·바", tabRun: "러닝·산책", tabSpots: "명소·전시", tabEss: "근처 편의",
+      tabFood: "맛집", tabCafe: "카페·바", tabRun: "러닝·산책", tabSpots: "명소·전시", tabEss: "편의·약국·마트",
       badgeF: "대표 유명", badgeH: "숨은 로컬 픽", badgeP: "생활 편의",
-      hours: "영업", tip: "TIP", naver: "네이버 지도", google: "Google Maps",
+      hours: "영업", tip: "TIP", naver: "네이버 지도", google: "구글 지도",
       count: "곳", walkIcon: "이동",
       routesTitle: "추천 동선",
-      routesSub: "한 동선에 대표 맛집 1곳, 발견한 느낌의 로컬 1~2곳, 걷거나 달리는 구간 1곳을 섞었습니다. 그대로 따라가도 되고, 순서만 바꿔도 됩니다.",
+      routesSub: "시간대와 이동 시간까지 맞춘 세 개의 코스. 각 정차지를 누르면 바로 지도로 이동합니다. 그대로 따라가도 되고, 순서만 바꿔도 됩니다.",
       footAddr: "노멀캐비넷 교동점 · 대구 중구 교동2길 29-11",
       footFine: "영업시간·휴무·요금은 2026년 11월 16일 지도 조회 기준입니다. 소규모 매장은 임시휴무가 잦으니 방문 당일 네이버 지도나 인스타그램에서 한 번 더 확인해 주세요. 지도 버튼을 누르면 해당 장소의 실제 지도로 이동합니다.",
       toTop: "위로",
@@ -274,22 +289,23 @@
     },
     en: {
       title: "Daegu Curation · normal cabinet. Gyodong",
-      desc: "35 places chosen by walking out of Gyodong — local food, cafés and bars, running routes, sights and night views, and everyday essentials, with distances, hours and map links.",
+      desc: "36 places chosen by normal cabinet. Gyodong — local food, cafés and bars, running routes, sights and night views, plus convenience stores, pharmacies and supermarkets, with distances, hours and map links.",
       hdrTitle: "Daegu Curation",
-      eyebrow: "DAEGU · GYODONG · CURATED 2026",
+      eyebrow: "HOTEL NORMAL CABINET · GYODONG · EST 2026 12 01",
       h1: "A day in Daegu,<br><em>like this.</em>",
-      lede: "35 places picked by walking out of the Gyodong alleys — from the queues worth joining to small bars only locals know. Distances, opening hours and map links, all on one page.",
+      lede: "A Daegu guide from normal cabinet. Gyodong: 36 places picked by walking out of the alleys — from the queues worth joining to small bars only locals know, plus the pharmacy that closes last and the 24-hour mart. Distances, hours and map links, all on one page.",
       baseLabel: "From",
       baseAddr: "Normal Cabinet Gyodong · 29-11, Gyodong 2-gil, Jung-gu, Daegu",
       baseNote: "10 min walk from Jungangno / Daegu Stn.",
-      chips: ["35 places", "5 categories", "3 routes"],
+      artCap: "Ordinary objects, better spaces",
+      chips: ["36 places", "5 categories", "3 routes", "Map links"],
       all: "All", routes: "Routes",
-      tabFood: "Food", tabCafe: "Cafés & Bars", tabRun: "Running", tabSpots: "Sights", tabEss: "Essentials",
+      tabFood: "Food", tabCafe: "Cafés & Bars", tabRun: "Running", tabSpots: "Sights", tabEss: "Convenience & Mart",
       badgeF: "Signature", badgeH: "Local pick", badgeP: "Everyday",
       hours: "HOURS", tip: "TIP", naver: "Naver Map", google: "Google Maps",
       count: "spots", walkIcon: "Getting there",
       routesTitle: "Suggested routes",
-      routesSub: "Each route mixes one signature place, one or two local finds and a stretch to walk or run. Follow it as written or just swap the order.",
+      routesSub: "Three courses timed hour by hour, with the walking and driving legs worked in. Tap any stop to open it straight in the map. Follow it as written or just swap the order.",
       footAddr: "Normal Cabinet Gyodong · 29-11, Gyodong 2-gil, Jung-gu, Daegu",
       footFine: "Hours, closing days and prices were checked on maps on 16 November 2026. Small places close without notice, so check Naver Map or Instagram on the day. Each map button opens the actual location in the map service.",
       toTop: "Back to top",
@@ -297,22 +313,23 @@
     },
     zh: {
       title: "大邱旅行策展 · normal cabinet. 校洞店",
-      desc: "从校洞胡同走出去挑出的35处 — 本地美食、咖啡与酒吧、跑步路线、景点与夜景、附近便利，附距离、营业时间与地图链接。",
+      desc: "normal cabinet. 校洞店为住客挑选的大邱36处 — 本地美食、咖啡与酒吧、跑步路线、景点与夜景，以及便利店、药局、超市，附距离、营业时间与地图链接。",
       hdrTitle: "大邱旅行策展",
-      eyebrow: "DAEGU · GYODONG · CURATED 2026",
+      eyebrow: "HOTEL NORMAL CABINET · GYODONG · EST 2026 12 01",
       h1: "在大邱的一天，<br><em>就这样。</em>",
-      lede: "从校洞胡同走出去挑出的35处。从值得排队的招牌店到只有本地人知道的小酒吧——距离、营业时间与地图链接，一页搞定。",
+      lede: "这是 normal cabinet. 校洞店为住客准备的大邱指南。从校洞胡同走出去挑出的36处——从值得排队的招牌店到只有本地人知道的小酒吧，再到营业到最晚的药局与24小时便利店。距离、营业时间与地图链接，一页搞定。",
       baseLabel: "出发点",
       baseAddr: "Normal Cabinet 校洞店 · 大邱中区校洞2街 29-11",
       baseNote: "中央路站、大邱站步行10分钟",
-      chips: ["35处", "5个分类", "3条路线"],
+      artCap: "Ordinary objects, better spaces",
+      chips: ["36处", "5个分类", "3条路线", "地图链接"],
       all: "全部", routes: "路线",
-      tabFood: "美食", tabCafe: "咖啡酒吧", tabRun: "跑步散步", tabSpots: "景点展览", tabEss: "附近便利",
+      tabFood: "美食", tabCafe: "咖啡酒吧", tabRun: "跑步散步", tabSpots: "景点展览", tabEss: "便利店·药局·超市",
       badgeF: "人气名店", badgeH: "本地私藏", badgeP: "生活便利",
-      hours: "时间", tip: "提示", naver: "Naver 地图", google: "Google Maps",
+      hours: "时间", tip: "提示", naver: "Naver 地图", google: "Google 地图",
       count: "处", walkIcon: "移动",
       routesTitle: "推荐路线",
-      routesSub: "每条路线都配上一家人气店、一两家本地私藏，以及一段走路或跑步的路。照着走可以，换个顺序也可以。",
+      routesSub: "按小时排好、连移动时间也算过的三条路线。点击每一站即可直接跳转到地图。照着走可以，换个顺序也可以。",
       footAddr: "Normal Cabinet 校洞店 · 大邱中区校洞2街 29-11",
       footFine: "营业时间、休息日与价格以2026年11月16日地图信息为准。小店临时休息较多，建议当天在 Naver 地图或 Instagram 再确认一次。点击地图按钮会打开该地点的实际地图。",
       toTop: "回到顶部",
@@ -350,7 +367,7 @@
       { id: "cafe", label: t.tabCafe, n: 7 },
       { id: "run", label: t.tabRun, n: 6 },
       { id: "spots", label: t.tabSpots, n: 8 },
-      { id: "ess", label: t.tabEss, n: 6 },
+      { id: "ess", label: t.tabEss, n: 7 },
       { id: "routes", label: t.routes, n: null }
     ];
     $("#tabs").innerHTML = items.map(function(it){
@@ -384,7 +401,7 @@
       "</div>" +
       '<p class="tip"><b>' + esc(t.tip) + "</b>" + esc(p.t[lang]) + "</p>" +
       '<div class="maprow">' +
-        '<a class="mapbtn nv" href="' + esc(naverUrl(p)) + '" target="_blank" rel="noopener">' + pin + esc(t.naver) + "</a>" +
+        '<a class="mapbtn" href="' + esc(naverUrl(p)) + '" target="_blank" rel="noopener">' + pin + esc(t.naver) + "</a>" +
         '<a class="mapbtn" href="' + esc(googleUrl(p)) + '" target="_blank" rel="noopener">' + pin + esc(t.google) + "</a>" +
       "</div></article>";
   }
@@ -412,7 +429,10 @@
         "<h3>" + esc(r.title[lang]) + "</h3>" +
         '<p class="rmeta">' + esc(r.meta[lang]) + "</p>" +
         '<ol class="steps">' + r.steps.map(function(s){
-          return "<li><span class=\"st\">" + esc(s.t) + '</span><span class="sn">' + esc(s.n[lang]) + "</span></li>";
+          var link = s.q ? '<a href="' + esc("https://map.naver.com/p/search/" + encodeURIComponent(s.q + " 대구")) + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" onmouseover="this.style.color=\'#E4A38F\'" onmouseout="this.style.color=\'inherit\'">' : "";
+          var end = s.q ? "</a>" : "";
+          return "<li><span class=\"st\">" + esc(s.t) + '</span><span class="sn">' + link + esc(s.n[lang]) + end +
+            (s.m ? "<small>" + esc(s.m[lang]) + "</small>" : "") + "</span></li>";
         }).join("") + "</ol></article>";
     }).join("");
   }
@@ -426,7 +446,7 @@
     routes.style.display = (filter === "all" || showRoutes) ? "" : "none";
     if (scroll && !showRoutes) {
       var first = $("#sections .sec:not(.hidden)");
-      var y = (first ? first.getBoundingClientRect().top + window.pageYOffset : 0) - 118;
+      var y = (first ? first.getBoundingClientRect().top + window.pageYOffset : 0) - 112;
       window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
     }
   }
