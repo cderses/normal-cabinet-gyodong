@@ -143,7 +143,7 @@ window.CURATION = {
     },
     {
       c: 2, b: "f", n: { ko: "수평적관계", en: "Horizontal Relationship", zh: "水平关系" },
-      w: { ko: "차 7분", en: "7 min by car", zh: "车程 7 分钟" }, d: "삼덕동",
+      w: { ko: "차 7분", en: "7 min by car", zh: "车程 7 分钟" }, d: { ko: "삼덕동", en: "Samdeok-dong", zh: "三德洞" },
       a: "대구 중구 동덕로26길 115",
       h: { ko: "매일 10:00–22:00", en: "Daily 10:00–22:00", zh: "每日 10:00–22:00" },
       s: { ko: "직화 로스터로 직접 볶는 핸드드립 전문점. 중정을 둘러싼 그레이톤 무채색 공간.", en: "A hand-drip specialist roasting on a direct-fire roaster, in a grey room wrapped around a courtyard.", zh: "直火烘焙的手冲专门店。围绕中庭的灰色调空间。" },
@@ -151,7 +151,7 @@ window.CURATION = {
     },
     {
       c: 2, b: "h", n: { ko: "아르티커피", en: "Arti Coffee", zh: "阿尔蒂咖啡" },
-      w: { ko: "봉산문화거리 차 6분", en: "6 min by car · Bongsan", zh: "凤山文化街 车程 6 分钟" }, d: "차 6분",
+      w: { ko: "봉산문화거리 차 6분", en: "6 min by car · Bongsan", zh: "凤山文化街 车程 6 分钟" }, d: { ko: "차 6분", en: "6 min by car", zh: "车程 6 分钟" },
       a: "대구 중구 봉산문화길 24 1층",
       h: { ko: "11:00–20:00 · 목 휴무", en: "11:00–20:00 · closed Thu", zh: "11:00–20:00 · 周四休" },
       s: { ko: "바리스타·문화기획자·예술가가 함께 만든 유럽 감성 카페. 초코 카스테라와 아르티 라테가 시그니처.", en: "A European-feel café run by a barista, a cultural planner and an artist — chocolate kasutera and the Arti latte.", zh: "由咖啡师、文化策划人和艺术家共同打造的欧式咖啡馆。巧克力长崎蛋糕与Arti拿铁是招牌。" },
@@ -160,7 +160,7 @@ window.CURATION = {
 
     {
       c: 3, b: "f", n: { ko: "국채보상운동기념공원", en: "Gukchae Bosang Memorial Park", zh: "国债报偿运动纪念公园" },
-      w: { ko: "도보 12분", en: "12 min walk", zh: "步行 12 分钟" }, d: "0.8km · 둘레 1km",
+      w: { ko: "도보 12분", en: "12 min walk", zh: "步行 12 分钟" }, d: { ko: "0.8km · 둘레 1km", en: "0.8 km · 1 km loop", zh: "0.8 公里 · 环路 1 公里" },
       a: "대구 중구 국채보상로 670",
       h: { ko: "24시간 · 가로등 양호", en: "24 hours · well lit", zh: "24 小时 · 照明良好" },
       s: { ko: "숙소에서 가장 가까운 조깅 코스. 둘레 약 1km 평지, 255m 대왕참나무 오솔길과 연못 데크.", en: "The nearest jogging loop: about 1 km of flat path, a 255 m oak avenue and a pond deck.", zh: "离民宿最近的慢跑路线。约1公里平地环路，255米大橡树步道和池塘木栈道。" },
@@ -168,7 +168,7 @@ window.CURATION = {
     },
     {
       c: 3, b: "f", n: { ko: "신천 둔치 러닝", en: "Sincheon Riverside Run", zh: "新川河畔跑步" },
-      w: { ko: "동신교까지 차 6분", en: "6 min by car to Dongsin bridge", zh: "到东新桥车程 6 分钟" }, d: "5km 코스",
+      w: { ko: "동신교까지 차 6분", en: "6 min by car to Dongsin bridge", zh: "到东新桥车程 6 分钟" }, d: { ko: "5km 코스", en: "5 km course", zh: "5 公里路线" },
       a: "대구 중구 동인동4가 동신교 일대",
       h: { ko: "24시간 · 야간 조명", en: "24 hours · lights at night", zh: "24 小时 · 夜间照明" },
       s: { ko: "대봉교~칠성교 약 5km 평지. 보행·자전거 분리, 탄성 포장, 칠성시장 인근 야간 조명.", en: "About 5 km flat from Daebong to Chilseong bridge, separate foot and bike lanes, springy surface, lights near Chilseong market.", zh: "大凤桥至七星桥约5公里平路。人行与自行车道分离，弹性路面，七星市场附近夜间照明好。" },
@@ -176,7 +176,7 @@ window.CURATION = {
     },
     {
       c: 3, b: "f", n: { ko: "수성못 둘레길", en: "Suseong Lake Loop", zh: "寿城池环湖路" },
-      w: { ko: "차 17분", en: "17 min by car", zh: "车程 17 分钟" }, d: "2,020m 순환",
+      w: { ko: "차 17분", en: "17 min by car", zh: "车程 17 分钟" }, d: { ko: "2,020m 순환", en: "2,020 m loop", zh: "2,020 米环线" },
       a: "대구 수성구 수성못길 37",
       h: { ko: "24시간 무료 · 3호선 수성못역 300m", en: "24 h, free · 300 m from Suseongmot stn.", zh: "24 小时免费 · 距寿城池站 300 米" },
       s: { ko: "한 바퀴 2,020m 순환. 서쪽 마사토 흙길, 동쪽 수변데크, 남쪽 왕벚나무길 — 차량 없는 호수길.", en: "A 2,020 m loop: dirt path west, waterside deck east, cherry avenue south — no cars on the lake path.", zh: "一圈2,020米的环湖路。西侧土路、东侧水边木栈道、南侧樱花道，全程无车。" },
@@ -184,7 +184,7 @@ window.CURATION = {
     },
     {
       c: 3, b: "f", n: { ko: "경상감영공원 → 근대골목", en: "Gamyeong Park → Modern Alleys", zh: "庆尚监营公园 → 近代胡同" },
-      w: { ko: "도보 11분", en: "11 min walk", zh: "步行 11 分钟" }, d: "약 3km · 1시간~1시간 30분",
+      w: { ko: "도보 11분", en: "11 min walk", zh: "步行 11 分钟" }, d: { ko: "약 3km · 1시간~1시간 30분", en: "about 3 km · 1–1.5 h", zh: "约 3 公里 · 1–1.5 小时" },
       a: "대구 중구 포정동 경상감영공원",
       h: { ko: "야외 24시간 · 저녁 조명", en: "Outdoors 24 h · evening lights", zh: "户外 24 小时 · 傍晚灯光" },
       s: { ko: "공원에서 만경관·계산성당·청라언덕까지 약 3km. 차 없는 골목과 옛 건물 조명이 이어진다.", en: "About 3 km from the park through Mangeyonggwan, Gyesan Cathedral and Cheongna Hill — car-free alleys and lit old buildings.", zh: "从公园经万名馆、桂山圣堂到青罗山丘约3公里，无车胡同与老建筑灯光相连。" },
@@ -192,7 +192,7 @@ window.CURATION = {
     },
     {
       c: 3, b: "h", n: { ko: "봉산문화거리 산책", en: "Bongsan Culture Street", zh: "凤山文化街散步" },
-      w: { ko: "차 6분", en: "6 min by car", zh: "车程 6 分钟" }, d: "약 1km · 20~30분",
+      w: { ko: "차 6분", en: "6 min by car", zh: "车程 6 分钟" }, d: { ko: "약 1km · 20~30분", en: "about 1 km · 20–30 min", zh: "约 1 公里 · 20–30 分钟" },
       a: "대구 중구 봉산문화길 일대",
       h: { ko: "상점별 상이 · 대개 20시까지", en: "Shop by shop · mostly to 20:00", zh: "各店不同 · 多至 20:00" },
       s: { ko: "대구의 '작은 인사동'. 갤러리·공방·카페가 이어지는 약 1km, 20~30분.", en: "Daegu's \"little Insadong\": about 1 km of galleries, studios and cafés in 20–30 minutes.", zh: "大邱的“小仁寺洞”。画廊、工坊、咖啡馆相连约1公里，20–30分钟。" },
@@ -200,7 +200,7 @@ window.CURATION = {
     },
     {
       c: 3, b: "f", n: { ko: "김광석 다시그리기길", en: "Kim Gwangseok Street", zh: "金光石再绘之路" },
-      w: { ko: "차 9분", en: "9 min by car", zh: "车程 9 分钟" }, d: "왕복 약 1km",
+      w: { ko: "차 9분", en: "9 min by car", zh: "车程 9 分钟" }, d: { ko: "왕복 약 1km", en: "about 1 km round trip", zh: "往返约 1 公里" },
       a: "대구 중구 대봉동 6-11",
       h: { ko: "24시간 개방", en: "Open 24 hours", zh: "24 小时开放" },
       s: { ko: "벽화 골목 왕복 약 1km. 대봉교로 내려가면 신천 5km 코스와 바로 연결된다.", en: "A mural alley about 1 km round trip; drop to Daebong bridge and it meets the 5 km Sincheon course.", zh: "壁画胡同往返约1公里。从大凤桥下去可直接接上新川5公里路线。" },

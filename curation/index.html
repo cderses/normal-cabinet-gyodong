@@ -377,7 +377,7 @@
       '<div class="card-top">' + badge +
         '<span class="walk">' + foot + esc(p.w[lang]) + "</span></div>" +
       "<h3>" + esc(p.n[lang]) + "</h3>" +
-      '<p class="sub">' + esc(p.d) + "</p>" +
+      '<p class="sub">' + esc(typeof p.d === "string" ? p.d : p.d[lang]) + "</p>" +
       '<p class="desc">' + esc(p.s[lang]) + "</p>" +
       '<div class="meta">' +
         '<div class="row"><span class="k">' + esc(t.hours) + '</span><span class="v">' + esc(p.h[lang]) + "</span></div>" +
