@@ -10,6 +10,7 @@
     "errors": [] }
   ```
 - 동작: `rooms.json`(GitHub Pages)을 읽어 25개 객실 `.ics` 를 병렬 fetch → 파싱 → 20초 메모리 캐시
+- `?fresh=1` 로 호출하면 20초 캐시를 건너뛰고 바로 다시 조회 (손님 페이지 복귀·새로고침용)
 - CORS: `access-control-allow-origin: *` (공개 데이터, 비밀값 없음)
 
 ## 파일

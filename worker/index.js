@@ -5,6 +5,7 @@
 //     "errors": [{ "listing_id": "...", "error": "..." }] }
 // 객실 목록(.ics URL)은 저장소의 rooms.json 을 그대로 읽어 쓰므로 중복 관리가 없습니다.
 // 결과는 Worker 인스턴스 메모리에 20초 캐시. 비밀값 없음.
+// ?fresh=1 로 호출하면 20초 캐시를 건너뛰고 즉시 .ics 를 다시 받아옵니다(손님 페이지 복귀·새로고침용).
 
 const R = "https://cderses.github.io/normal-cabinet-gyodong/rooms.json";
 const T = 9000;      // ics 1건당 타임아웃
@@ -67,13 +68,14 @@ async function build() {
 }
 
 export default {
-  async fetch() {
+  async fetch(request) {
     const h = {
       "content-type": "application/json",
       "access-control-allow-origin": "*",
     };
     try {
-      if (!cache.body || Date.now() - cache.at > C) {
+      const fresh = new URL(request.url).searchParams.get("fresh") === "1";
+      if (fresh || !cache.body || Date.now() - cache.at > C) {
         cache = { at: Date.now(), body: await build() };
       }
       return new Response(JSON.stringify(cache.body), { headers: h });
