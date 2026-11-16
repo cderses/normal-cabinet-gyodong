@@ -192,11 +192,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      row-gap: 6px;
       gap: 10px;
       margin-top: 10px;
       padding-top: 10px;
       border-top: 1px solid var(--line);
       font-size: 13px;
+    }
+    .summary-count {
+      flex: 1 1 auto;
+      min-width: 0;
     }
     .summary-count strong {
       color: var(--ok-ink);
@@ -331,10 +337,14 @@
       color: var(--muted);
       line-height: 1.6;
     }
-    @media (max-width: 380px) {
-      h1 { font-size: 20px; }
+    @media (max-width: 430px) {
+      .brand-tag { font-size: 10px; letter-spacing: 0.04em; white-space: nowrap; }
       .lang-btn { padding: 5px 8px; font-size: 11.5px; }
       .chip { padding: 7px 10px; font-size: 12px; }
+    }
+    @media (max-width: 360px) {
+      h1 { font-size: 20px; }
+      .chip { font-size: 11.5px; padding: 6px 9px; }
     }
   </style>
 </head>
@@ -484,7 +494,7 @@
           { id: "today2", label: "今天起2晚" }
         ],
         stays: (a, b, n) => `${a} → ${b} · ${n}晚`,
-        summary: (ok, total) => `可订 <strong>${ok}</strong> 间 · 共 ${total} 间`,
+        summary: (ok, total) => `可订 <strong>${ok}</strong> / 共 ${total} 间`,
         empty: "所选日期没有空房。请更换日期，或关闭“只看空房”再试。",
         notice: "<b>预订后提示</b> — 门锁密码和入住说明会发送到您的爱彼迎消息。到店后按密码自助入住。",
         synced: (t) => `爱彼迎日历更新时间：${t}`,
