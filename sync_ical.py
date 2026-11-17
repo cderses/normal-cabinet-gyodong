@@ -9,6 +9,7 @@ lists the public room metadata (listing_id, room number, ...).
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
+import base64
 import json
 import os
 import re
@@ -23,6 +24,13 @@ def load_ical_map():
     raw = os.environ.get(ENV_NAME, "").strip()
     if not raw:
         sys.exit(f"{ENV_NAME} is not set; refusing to run without the private iCal map.")
+    if not raw.startswith("{"):
+        # 값은 base64(JSON) 으로도 넣을 수 있다(비밀 입력창에서 긴 숫자열이 카드번호로
+        # 오인되는 것을 피하려고 쓴 형식). 두 형식 모두 받는다.
+        try:
+            raw = base64.b64decode(raw, validate=True).decode("utf-8")
+        except Exception as exc:
+            sys.exit(f"{ENV_NAME} is neither JSON nor base64(JSON): {exc}")
     try:
         data = json.loads(raw)
     except json.JSONDecodeError as exc:
