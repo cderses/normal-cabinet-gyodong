@@ -3,13 +3,17 @@
 //   { "updated_at": "2026-11-16T23:27:36+09:00",
 //     "rooms": { "<listing_id>": { "blocked": [["YYYY-MM-DD","YYYY-MM-DD"], ...] }, ... },
 //     "errors": [{ "listing_id": "...", "error": "..." }] }
-// 객실 목록(.ics URL)은 저장소의 rooms.json 을 그대로 읽어 쓰므로 중복 관리가 없습니다.
-// 결과는 Worker 인스턴스 메모리에 20초 캐시. 비밀값 없음.
-// ?fresh=1 로 호출하면 20초 캐시를 건너뛰고 즉시 .ics 를 다시 받아옵니다(손님 페이지 복귀·새로고침용).
+// 객실 목록(.ics URL)은 Worker Secret `ICAL_MAP_JSON`({"<listing_id>": "<ical_url>"}) 에서 읽습니다.
+// .ics 주소는 비공개 토큰이므로 공개 저장소(rooms.json)에는 두지 않습니다.
+// 결과는 Worker 인스턴스 메모리에 20초 캐시.
+// ?fresh=1 로 호출하면 캐시를 건너뛰고 즉시 다시 받아옵니다 — 단, 직전 조회가 끝난 뒤 5초가 지나지
+// 않았으면 연속 호출로 Airbnb 를 두드리지 않도록 캐시를 그대로 돌려줍니다(최소 5초 쿨다운).
+// CORS 는 워크인 페이지(https://cderses.github.io)만 허용합니다.
 
-const R = "https://cderses.github.io/normal-cabinet-gyodong/rooms.json";
+const ALLOWED_ORIGIN = "https://cderses.github.io";
 const T = 9000;      // ics 1건당 타임아웃
 const C = 20000;     // 메모리 캐시 20초
+const MIN = 5000;    // ?fresh=1 최소 쿨다운 5초
 
 let cache = { at: 0, body: null };
 
@@ -43,17 +47,28 @@ async function get(u) {
   }
 }
 
-async function build() {
-  const list = JSON.parse(await get(R));
+function icalMap(env) {
+  const raw = (env && env.ICAL_MAP_JSON) || "";
+  if (!raw) throw new Error("ICAL_MAP_JSON secret is not set");
+  const map = JSON.parse(raw);
+  if (!map || typeof map !== "object" || Array.isArray(map)) {
+    throw new Error("ICAL_MAP_JSON must be an object of listing_id -> ical_url");
+  }
+  return map;
+}
+
+async function build(env) {
+  const map = icalMap(env);
+  const ids = Object.keys(map);
   const rooms = {};
   const errors = [];
   const res = await Promise.all(
-    list.map((room) =>
-      get(room.ical_url)
-        .then((text) => [room.listing_id, parse(text)])
+    ids.map((id) =>
+      get(map[id])
+        .then((text) => [id, parse(text)])
         .catch((err) => {
-          errors.push({ listing_id: room.listing_id, error: String(err) });
-          return [room.listing_id, []];
+          errors.push({ listing_id: id, error: String(err) });
+          return [id, []];
         })
     )
   );
@@ -68,15 +83,19 @@ async function build() {
 }
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const h = {
       "content-type": "application/json",
-      "access-control-allow-origin": "*",
+      "access-control-allow-origin": ALLOWED_ORIGIN,
+      "vary": "origin",
     };
     try {
       const fresh = new URL(request.url).searchParams.get("fresh") === "1";
-      if (fresh || !cache.body || Date.now() - cache.at > C) {
-        cache = { at: Date.now(), body: await build() };
+      const stale = !cache.body || Date.now() - cache.at > C;
+      const cooled = cache.body && Date.now() - cache.at < MIN;
+      if (stale && !(fresh && cooled)) {
+        const body = await build(env);
+        cache = { at: Date.now(), body: body };
       }
       return new Response(JSON.stringify(cache.body), { headers: h });
     } catch (e) {
