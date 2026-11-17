@@ -26,6 +26,8 @@ jobs:
           python-version: "3.12"
 
       - name: Sync Airbnb iCal feeds
+        env:
+          GYODONG_ICAL_MAP: ${{ secrets.GYODONG_ICAL_MAP }}
         run: python3 sync_ical.py
 
       - name: Commit updated availability
