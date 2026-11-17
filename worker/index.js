@@ -50,7 +50,7 @@ async function get(u) {
 function icalMap(env) {
   let raw = ((env && env.ICAL_MAP_JSON) || "").trim();
   if (!raw) throw new Error("ICAL_MAP_JSON secret is not set");
-  if (raw[0] !== "{") raw = atob(raw); // base64(JSON) 형식도 허용
+  if (raw.charCodeAt(0) !== 123) raw = atob(raw); // base64(JSON) 형식도 허용
   const map = JSON.parse(raw);
   if (!map || typeof map !== "object" || Array.isArray(map)) {
     throw new Error("ICAL_MAP_JSON must be an object of listing_id -> ical_url");
