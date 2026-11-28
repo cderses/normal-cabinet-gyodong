@@ -1,40 +1,40 @@
 {
-  "updated_at": "2026-11-28T08:49:47+09:00",
+  "updated_at": "2026-11-28T10:03:38+09:00",
   "rooms": {
-    "1814883010975676797": {
-      "blocked": []
-    },
-    "1814871912587769835": {
-      "blocked": []
-    },
     "1814960665596083265": {
-      "blocked": []
-    },
-    "1814963231899394153": {
-      "blocked": []
-    },
-    "1814856937247553023": {
-      "blocked": []
-    },
-    "1814874933693290746": {
-      "blocked": []
-    },
-    "1814962346326668411": {
-      "blocked": []
-    },
-    "1814852983471104053": {
       "blocked": []
     },
     "1814884946540748524": {
       "blocked": []
     },
-    "1814967897125006778": {
+    "1814856937247553023": {
+      "blocked": []
+    },
+    "1814962346326668411": {
+      "blocked": []
+    },
+    "1814871912587769835": {
+      "blocked": []
+    },
+    "1814883010975676797": {
+      "blocked": []
+    },
+    "1814963231899394153": {
+      "blocked": []
+    },
+    "1814874933693290746": {
+      "blocked": []
+    },
+    "1814852983471104053": {
+      "blocked": []
+    },
+    "1814965027690999327": {
+      "blocked": []
+    },
+    "1814966187730601502": {
       "blocked": []
     },
     "1814964147939032842": {
-      "blocked": []
-    },
-    "1814967058430677891": {
       "blocked": []
     },
     "1814968809775026870": {
@@ -43,165 +43,39 @@
     "1814969624998864924": {
       "blocked": []
     },
-    "1814973410036260725": {
+    "1814970472723559549": {
       "blocked": []
     },
-    "1814971369840083417": {
+    "1814967058430677891": {
       "blocked": []
     },
-    "1814965027690999327": {
+    "1814967897125006778": {
       "blocked": []
     },
     "1814972397895705621": {
       "blocked": []
     },
+    "1814974247643788406": {
+      "blocked": []
+    },
     "1814975064687815745": {
       "blocked": []
     },
-    "1814966187730601502": {
+    "1814971369840083417": {
+      "blocked": []
+    },
+    "1814973410036260725": {
       "blocked": []
     },
     "1814975837820401085": {
       "blocked": []
     },
-    "1814974247643788406": {
+    "1814977801137448123": {
       "blocked": []
     },
     "1814976697218053645": {
       "blocked": []
-    },
-    "1814977801137448123": {
-      "blocked": []
-    },
-    "1814970472723559549": {
-      "blocked": []
     }
   },
-  "errors": [
-    {
-      "room": "#201",
-      "listing_id": "1814883010975676797",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#103",
-      "listing_id": "1814871912587769835",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#203",
-      "listing_id": "1814960665596083265",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#205",
-      "listing_id": "1814963231899394153",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#102",
-      "listing_id": "1814856937247553023",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#104",
-      "listing_id": "1814874933693290746",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#204",
-      "listing_id": "1814962346326668411",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#101",
-      "listing_id": "1814852983471104053",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#202",
-      "listing_id": "1814884946540748524",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#303",
-      "listing_id": "1814967897125006778",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#206",
-      "listing_id": "1814964147939032842",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#302",
-      "listing_id": "1814967058430677891",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#304",
-      "listing_id": "1814968809775026870",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#305",
-      "listing_id": "1814969624998864924",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#402",
-      "listing_id": "1814973410036260725",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#307",
-      "listing_id": "1814971369840083417",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#207",
-      "listing_id": "1814965027690999327",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#401",
-      "listing_id": "1814972397895705621",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#404",
-      "listing_id": "1814975064687815745",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#301",
-      "listing_id": "1814966187730601502",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#405",
-      "listing_id": "1814975837820401085",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#403",
-      "listing_id": "1814974247643788406",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#406",
-      "listing_id": "1814976697218053645",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#407",
-      "listing_id": "1814977801137448123",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "room": "#306",
-      "listing_id": "1814970472723559549",
-      "error": "HTTP Error 429: Too Many Requests"
-    }
-  ]
+  "errors": []
 }
